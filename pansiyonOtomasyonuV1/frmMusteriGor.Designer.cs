@@ -247,6 +247,7 @@
             this.dtpCikis.Name = "dtpCikis";
             this.dtpCikis.Size = new System.Drawing.Size(291, 28);
             this.dtpCikis.TabIndex = 49;
+            this.dtpCikis.ValueChanged += new System.EventHandler(this.dtpCikis_ValueChanged);
             // 
             // txtOdaUcreti
             // 
@@ -318,6 +319,7 @@
             this.dtpGiris.Name = "dtpGiris";
             this.dtpGiris.Size = new System.Drawing.Size(291, 28);
             this.dtpGiris.TabIndex = 48;
+            this.dtpGiris.ValueChanged += new System.EventHandler(this.dtpGiris_ValueChanged);
             // 
             // label7
             // 

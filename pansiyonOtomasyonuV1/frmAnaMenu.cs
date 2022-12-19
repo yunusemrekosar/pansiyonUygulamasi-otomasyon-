@@ -46,11 +46,11 @@ namespace pansiyonOtomasyonuV1
 
         private void button2_Click(object sender, EventArgs e)
         {
-          /*  gelirGider gelirGider= new gelirGider();
+            frmGelirGider gelirGider= new frmGelirGider();
             gelirGider.StartPosition = FormStartPosition.Manual;
             gelirGider.Location = new Point(104, 104);
             gelirGider.Show();
-            this.Hide();*/
+            this.Hide();
         }
 
         private void button1_Click(object sender, EventArgs e)

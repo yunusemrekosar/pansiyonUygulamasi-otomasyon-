@@ -264,5 +264,28 @@ namespace pansiyonOtomasyonuV1
         {
                 Application.Exit();
         }
+
+        private void dtpCikis_ValueChanged(object sender, EventArgs e)
+        {
+            if (cbTarihiAktiflestir.Checked == false)
+            {
+                DateTime giris = dtpGiris.Value;
+                DateTime cikis = dtpCikis.Value;
+                int kalinacakGun = cikis.Day - giris.Day;
+                txtOdaUcreti.Text = (kalinacakGun * 200).ToString();
+            }
+        }
+
+        private void dtpGiris_ValueChanged(object sender, EventArgs e)
+        {
+            if (cbTarihiAktiflestir.Checked==false)
+            {
+                DateTime giris = dtpGiris.Value;
+                DateTime cikis = dtpCikis.Value;
+                int kalinacakGun = cikis.Day - giris.Day;
+                txtOdaUcreti.Text = (kalinacakGun * 200).ToString();
+            }
+            
+        }
     }
 }

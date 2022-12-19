@@ -190,6 +190,7 @@ namespace pansiyonOtomasyonuV1
             DateTime cikis = dtpCikis.Value;
             int kalinacakGun = cikis.Day - giris.Day;
             txtOdaUcreti.Text = (kalinacakGun * 200).ToString();
+
         }
 
         private void btnGoAnaMenu_Click(object sender, EventArgs e)
