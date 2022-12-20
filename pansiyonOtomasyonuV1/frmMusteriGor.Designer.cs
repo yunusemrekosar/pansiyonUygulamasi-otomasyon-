@@ -45,7 +45,6 @@
             this.txtTelNu = new System.Windows.Forms.TextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.txtOdaNu = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.dtpCikis = new System.Windows.Forms.DateTimePicker();
             this.txtOdaUcreti = new System.Windows.Forms.TextBox();
@@ -67,6 +66,7 @@
             this.btnGoruntule = new System.Windows.Forms.Button();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.cbTarihiAktiflestir = new System.Windows.Forms.CheckBox();
+            this.txtOdaNu = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // btnGüncelle
@@ -195,6 +195,7 @@
             // 
             // comboBox1
             // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
@@ -217,16 +218,6 @@
             this.label10.TabIndex = 52;
             this.label10.Text = "Cinsiyet:";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // txtOdaNu
-            // 
-            this.txtOdaNu.Enabled = false;
-            this.txtOdaNu.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
-            this.txtOdaNu.Location = new System.Drawing.Point(672, 52);
-            this.txtOdaNu.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.txtOdaNu.Name = "txtOdaNu";
-            this.txtOdaNu.Size = new System.Drawing.Size(291, 28);
-            this.txtOdaNu.TabIndex = 51;
             // 
             // label9
             // 
@@ -411,6 +402,7 @@
             this.txtAra.Font = new System.Drawing.Font("Verdana", 10.8F, System.Drawing.FontStyle.Bold);
             this.txtAra.Location = new System.Drawing.Point(680, 207);
             this.txtAra.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.txtAra.MaxLength = 30;
             this.txtAra.Name = "txtAra";
             this.txtAra.Size = new System.Drawing.Size(283, 29);
             this.txtAra.TabIndex = 56;
@@ -430,6 +422,7 @@
             // 
             // comboBox2
             // 
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.Font = new System.Drawing.Font("Verdana", 10.8F, System.Drawing.FontStyle.Bold);
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Items.AddRange(new object[] {
@@ -442,7 +435,6 @@
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(133, 30);
             this.comboBox2.TabIndex = 59;
-            this.comboBox2.Text = "Ad";
             // 
             // cbTarihiAktiflestir
             // 
@@ -455,12 +447,47 @@
             this.cbTarihiAktiflestir.Text = "Tarihi Aktifleştir";
             this.cbTarihiAktiflestir.UseVisualStyleBackColor = true;
             // 
+            // txtOdaNu
+            // 
+            this.txtOdaNu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.txtOdaNu.FormattingEnabled = true;
+            this.txtOdaNu.Items.AddRange(new object[] {
+            "101",
+            "102",
+            "103",
+            "104",
+            "105",
+            "201",
+            "202",
+            "203",
+            "204",
+            "205",
+            "301",
+            "302",
+            "303",
+            "304",
+            "305",
+            "401",
+            "402",
+            "403",
+            "405",
+            "501",
+            "502",
+            "503",
+            "504",
+            "505"});
+            this.txtOdaNu.Location = new System.Drawing.Point(671, 51);
+            this.txtOdaNu.Name = "txtOdaNu";
+            this.txtOdaNu.Size = new System.Drawing.Size(291, 30);
+            this.txtOdaNu.TabIndex = 61;
+            // 
             // frmMusteriGor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.CadetBlue;
             this.ClientSize = new System.Drawing.Size(1172, 472);
+            this.Controls.Add(this.txtOdaNu);
             this.Controls.Add(this.cbTarihiAktiflestir);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.btnGoruntule);
@@ -469,7 +496,6 @@
             this.Controls.Add(this.txtTelNu);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.txtOdaNu);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.dtpCikis);
             this.Controls.Add(this.txtOdaUcreti);
@@ -500,6 +526,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Müsteri Gör";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMusteriGor_FormClosed);
+            this.Load += new System.EventHandler(this.frmMusteriGor_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -524,7 +551,6 @@
         private System.Windows.Forms.TextBox txtTelNu;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox txtOdaNu;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.DateTimePicker dtpCikis;
         private System.Windows.Forms.TextBox txtOdaUcreti;
@@ -546,5 +572,6 @@
         private System.Windows.Forms.Button btnGoruntule;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.CheckBox cbTarihiAktiflestir;
+        private System.Windows.Forms.ComboBox txtOdaNu;
     }
 }

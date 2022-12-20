@@ -89,6 +89,7 @@
     <Compile Include="giris.Designer.cs">
       <DependentUpon>giris.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helper.cs" />
     <Compile Include="MusteriEkle.cs">
       <SubType>Form</SubType>
     </Compile>

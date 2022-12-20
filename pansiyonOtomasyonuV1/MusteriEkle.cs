@@ -159,33 +159,46 @@ namespace pansiyonOtomasyonuV1
         }
         private void btnKaydet_Click(object sender, EventArgs e)
         {
-            DateTime giris = dtpGiris.Value;
-            DateTime cikis = dtpCikis.Value;
-            try
+            TextBox[] textBoxes = new TextBox[] { txtAdi, txtSoyadi, txtTelNu, txtTcKimlikNu, txtOdaUcreti };
+            ComboBox[] comboBoxes = new ComboBox[] {comboBox1 };
+            Helper denetleyici = new Helper();
+            int a = denetleyici.Tdenetleyici(textBoxes);
+            int b = denetleyici.Cdenetleyici(comboBoxes);
+            if (a+b > 0)
             {
-                baglanti.Open();
-                SqlCommand komut = new SqlCommand("insert TBLmusteriler (adi,soyadi,telNu,cinsiyet,mail," +
-                   "tcKimlikNu,odaUcreti,odaNu,girisTarihi,cikisTarihi) values (@Adi,@soyadi,@telNu,@cinsiyet,@mail,@tcKimlikNu,@odaUcreti,@odaNu,@girisTarihi,@cikisTarihi)", baglanti);
-                komut.Parameters.AddWithValue("@Adi", txtAdi.Text);
-                komut.Parameters.AddWithValue("@soyadi", txtSoyadi.Text);
-                komut.Parameters.AddWithValue("@telNu", txtTelNu.Text);
-                komut.Parameters.AddWithValue("@cinsiyet", comboBox1.Text);
-                komut.Parameters.AddWithValue("@mail", txtMail.Text);
-                komut.Parameters.AddWithValue("@tcKimlikNu", txtTcKimlikNu.Text);
-                komut.Parameters.AddWithValue("@odaUcreti", int.Parse(txtOdaUcreti.Text));
-                komut.Parameters.AddWithValue("@odaNu", txtOdaNu.Text);
-                komut.Parameters.AddWithValue("@girisTarihi", giris.ToString("yyyy /MM/dd"));
-                komut.Parameters.AddWithValue("@cikisTarihi", cikis.ToString("yyyy /MM/dd"));
-                komut.ExecuteNonQuery();
-                baglanti.Close();
-                lblSonuc.Text = txtAdi.Text + " " + txtSoyadi.Text + " Adlı Müşteri eklendi";
-                kutularıbosalt();
-                MusteriEkle_Load(sender, e);
-                
+                MessageBox.Show("Boş Bırakılamaz Bölümler Var");
+                a = 0;
             }
-            catch (Exception hata)
+            else
             {
-                MessageBox.Show(hata.Message);
+                DateTime giris = dtpGiris.Value;
+                DateTime cikis = dtpCikis.Value;
+                try
+                {
+                    baglanti.Open();
+                    SqlCommand komut = new SqlCommand("insert TBLmusteriler (adi,soyadi,telNu,cinsiyet,mail," +
+                       "tcKimlikNu,odaUcreti,odaNu,girisTarihi,cikisTarihi) values (@Adi,@soyadi,@telNu,@cinsiyet,@mail,@tcKimlikNu,@odaUcreti,@odaNu,@girisTarihi,@cikisTarihi)", baglanti);
+                    komut.Parameters.AddWithValue("@Adi", txtAdi.Text);
+                    komut.Parameters.AddWithValue("@soyadi", txtSoyadi.Text);
+                    komut.Parameters.AddWithValue("@telNu", txtTelNu.Text);
+                    komut.Parameters.AddWithValue("@cinsiyet", comboBox1.Text);
+                    komut.Parameters.AddWithValue("@mail", txtMail.Text);
+                    komut.Parameters.AddWithValue("@tcKimlikNu", txtTcKimlikNu.Text);
+                    komut.Parameters.AddWithValue("@odaUcreti", int.Parse(txtOdaUcreti.Text));
+                    komut.Parameters.AddWithValue("@odaNu", txtOdaNu.Text);
+                    komut.Parameters.AddWithValue("@girisTarihi", giris.ToString("yyyy /MM/dd"));
+                    komut.Parameters.AddWithValue("@cikisTarihi", cikis.ToString("yyyy /MM/dd"));
+                    komut.ExecuteNonQuery();
+                    baglanti.Close();
+                    lblSonuc.Text = txtAdi.Text + " " + txtSoyadi.Text + " Adlı Müşteri eklendi";
+                    kutularıbosalt();
+                    MusteriEkle_Load(sender, e);
+
+                }
+                catch (Exception hata)
+                {
+                    MessageBox.Show(hata.Message);
+                }
             }
         }
         private void dtpCikis_ValueChanged(object sender, EventArgs e)

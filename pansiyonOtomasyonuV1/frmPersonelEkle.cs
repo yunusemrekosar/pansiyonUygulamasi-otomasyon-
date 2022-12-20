@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+
 
 namespace pansiyonOtomasyonuV1
 {
@@ -22,14 +22,25 @@ namespace pansiyonOtomasyonuV1
         SqlConnection baglanti = new SqlConnection(@"Data Source=.;Initial Catalog=pansiyon1DB;Integrated Security=True");
         private void btnKaydet_Click(object sender, EventArgs e)
         {
-            baglanti.Open();
-            SqlCommand komut = new SqlCommand("insert TBLcalisanlar (calisanAdi, calisanSoyadi, calisanMaasi, calisanPozisyon)values(@calisanAdi, @calisanSoyadi, @calisanMaasi, @calisanPozisyon)", baglanti);
-            komut.Parameters.AddWithValue("@calisanAdi", txtPersonelAdi.Text);
-            komut.Parameters.AddWithValue("@calisanSoyadi", txtPersonelSoyadi.Text);
-            komut.Parameters.AddWithValue("@calisanMaasi", txtPersonelMaasi.Text);
-            komut.Parameters.AddWithValue("@calisanPozisyon", txtPersonelPozisyonu.Text);
-            komut.ExecuteNonQuery();
-            baglanti.Close();
+            TextBox[] textBoxes = new TextBox[] { txtPersonelAdi, txtPersonelSoyadi, txtPersonelMaasi, txtPersonelPozisyonu};
+            Helper denetleyici = new Helper();
+            int a = denetleyici.Tdenetleyici(textBoxes);
+            if (a > 0)
+            {
+                MessageBox.Show("Boş Bırakılamaz Metin Kutuları Var");
+                a = 0;
+            }
+            else
+            {
+                baglanti.Open();
+                SqlCommand komut = new SqlCommand("insert TBLcalisanlar (calisanAdi, calisanSoyadi, calisanMaasi, calisanPozisyon)values(@calisanAdi, @calisanSoyadi, @calisanMaasi, @calisanPozisyon)", baglanti);
+                komut.Parameters.AddWithValue("@calisanAdi", txtPersonelAdi.Text);
+                komut.Parameters.AddWithValue("@calisanSoyadi", txtPersonelSoyadi.Text);
+                komut.Parameters.AddWithValue("@calisanMaasi", txtPersonelMaasi.Text);
+                komut.Parameters.AddWithValue("@calisanPozisyon", txtPersonelPozisyonu.Text);
+                komut.ExecuteNonQuery();
+                baglanti.Close();
+            }
         }
 
         private void veriyiac(string p1 = "01,01,1754", string p2 = "01,01,3000")
@@ -81,17 +92,28 @@ namespace pansiyonOtomasyonuV1
 
         private void btnGuncelle_Click(object sender, EventArgs e)
         {
-            lstwPersonel.Items.Clear();
-            baglanti.Open();
-            SqlCommand komut = new SqlCommand("update TBLcalisanlar set calisanAdi=@calisanAdi,calisanSoyadi=@calisanSoyadi,calisanMaasi=@calisanMaasi,calisanPozisyon=@calisanPozisyon where calisanID=@id", baglanti);
-            komut.Parameters.AddWithValue("@calisanAdi", txtPersonelAdi.Text);
-            komut.Parameters.AddWithValue("@calisanSoyadi", txtPersonelSoyadi.Text);
-            komut.Parameters.AddWithValue("@calisanMaasi", txtPersonelMaasi.Text);
-            komut.Parameters.AddWithValue("@calisanPozisyon", txtPersonelPozisyonu.Text);
-            komut.Parameters.AddWithValue("@id  ", id);
-            komut.ExecuteNonQuery();
-            baglanti.Close();
-            veriyiac();
+            TextBox[] textBoxes = new TextBox[] { txtPersonelAdi, txtPersonelSoyadi, txtPersonelMaasi, txtPersonelPozisyonu };
+            Helper denetleyici = new Helper();
+            int a = denetleyici.Tdenetleyici(textBoxes);
+            if (a > 0)
+            {
+                MessageBox.Show("Boş Bırakılamaz Metin Kutuları Var");
+                a = 0;
+            }
+            else
+            {
+                lstwPersonel.Items.Clear();
+                baglanti.Open();
+                SqlCommand komut = new SqlCommand("update TBLcalisanlar set calisanAdi=@calisanAdi,calisanSoyadi=@calisanSoyadi,calisanMaasi=@calisanMaasi,calisanPozisyon=@calisanPozisyon where calisanID=@id", baglanti);
+                komut.Parameters.AddWithValue("@calisanAdi", txtPersonelAdi.Text);
+                komut.Parameters.AddWithValue("@calisanSoyadi", txtPersonelSoyadi.Text);
+                komut.Parameters.AddWithValue("@calisanMaasi", txtPersonelMaasi.Text);
+                komut.Parameters.AddWithValue("@calisanPozisyon", txtPersonelPozisyonu.Text);
+                komut.Parameters.AddWithValue("@id  ", id);
+                komut.ExecuteNonQuery();
+                baglanti.Close();
+                veriyiac();
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)

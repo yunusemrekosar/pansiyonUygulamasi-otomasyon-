@@ -358,6 +358,7 @@
             // 
             // cbFaturaAdi
             // 
+            this.cbFaturaAdi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbFaturaAdi.FormattingEnabled = true;
             this.cbFaturaAdi.Items.AddRange(new object[] {
             "Elektrik",

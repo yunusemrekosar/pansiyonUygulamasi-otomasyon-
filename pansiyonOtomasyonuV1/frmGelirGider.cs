@@ -83,8 +83,8 @@ namespace pansiyonOtomasyonuV1
             lbl3AylıkMutfak.Text = "Mutfak Harcaması:" + "  " + maylık3s;
             lbl6AylıkMutfak.Text = "Mutfak Harcaması:" + "  " + maylık6s;
             lblYıllıkMutfak.Text = "Mutfak Harcaması:" + "  " + myıllıks;
-           
-            
+
+
             decimal caylık = Hesapla("TBLcalisanlar", "calisanMaasi", 1);
             string caylıks = caylık.ToString();
             caylıks = String.Format("{0:n0}", caylık);
@@ -92,7 +92,7 @@ namespace pansiyonOtomasyonuV1
             string caylık3s = caylık3.ToString();
             caylık3s = String.Format("{0:n0}", caylık3);
             decimal caylık6 = Hesapla("TBLcalisanlar", "calisanMaasi", 6);
-            string caylık6s= caylık6.ToString();
+            string caylık6s = caylık6.ToString();
             caylık6s = String.Format("{0:n0}", caylık6);
             decimal cyıllık = Hesapla("TBLcalisanlar", "calisanMaasi", 12);
             string cyıllıks = cyıllık.ToString();
@@ -142,7 +142,7 @@ namespace pansiyonOtomasyonuV1
             decimal aylıkVergi = Convert.ToDecimal((((gaylık + maylık + caylık + faylık) / 100) * 18));
             string aylıkVergis = aylıkVergi.ToString();
             aylıkVergis = String.Format("{0:n0}", aylıkVergi);
-            lblAylıkVergi.Text = "Vergi:" +"  "+ aylıkVergis.ToString();
+            lblAylıkVergi.Text = "Vergi:" + "  " + aylıkVergis.ToString();
 
             decimal aylıkVergi3 = Convert.ToDecimal((((gaylık3 + maylık3 + caylık3 + faylık3) / 100) * 18));
             string aylıkVergis3 = aylıkVergi3.ToString();
@@ -176,17 +176,30 @@ namespace pansiyonOtomasyonuV1
 
         private void btnKaydet_Click(object sender, EventArgs e)
         {
-            DateTime tarih = new DateTime();
-            tarih = dtpTarih.Value;
-            baglanti.Open();
-            SqlCommand komut = new SqlCommand("insert TBLfaturalar (faturaAdi, faturaTutari, faturaTarihi)values(@adi,@tutari,@tarih)", baglanti);
-            komut.Parameters.AddWithValue("@adi", cbFaturaAdi.Text);
-            komut.Parameters.AddWithValue("@tutari", Convert.ToDecimal(txtFaturaTutari.Text));
-            komut.Parameters.AddWithValue("@tarih", tarih.ToString("yyyy/MM/dd"));
-            komut.ExecuteNonQuery();
-            baglanti.Close();
-            label1.Text = "Fatura Eklendi";
-            frmGelirGider_Load(sender, e);
+            ComboBox[] comboBoxes = new ComboBox[] { cbFaturaAdi };
+            TextBox[] textBoxes = new TextBox[] { txtFaturaTutari };
+            Helper denetleyici = new Helper();
+            int a = denetleyici.Tdenetleyici(textBoxes);
+            int b = denetleyici.Cdenetleyici(comboBoxes);
+            if (a+b > 0)
+            {
+                MessageBox.Show("Boş Bırakılamaz Metin Kutuları Var");
+                a = 0;
+            }
+            else
+            {
+                DateTime tarih = new DateTime();
+                tarih = dtpTarih.Value;
+                baglanti.Open();
+                SqlCommand komut = new SqlCommand("insert TBLfaturalar (faturaAdi, faturaTutari, faturaTarihi)values(@adi,@tutari,@tarih)", baglanti);
+                komut.Parameters.AddWithValue("@adi", cbFaturaAdi.Text);
+                komut.Parameters.AddWithValue("@tutari", Convert.ToDecimal(txtFaturaTutari.Text));
+                komut.Parameters.AddWithValue("@tarih", tarih.ToString("yyyy/MM/dd"));
+                komut.ExecuteNonQuery();
+                baglanti.Close();
+                label1.Text = "Fatura Eklendi";
+                frmGelirGider_Load(sender, e);
+            }
         }
     }
 }

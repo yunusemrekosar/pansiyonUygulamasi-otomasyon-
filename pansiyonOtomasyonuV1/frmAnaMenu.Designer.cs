@@ -38,8 +38,8 @@
             // 
             // btnGoFrmMusteriEkle
             // 
-            this.btnGoFrmMusteriEkle.BackColor = System.Drawing.Color.GreenYellow;
-            this.btnGoFrmMusteriEkle.Location = new System.Drawing.Point(80, 32);
+            this.btnGoFrmMusteriEkle.BackColor = System.Drawing.Color.YellowGreen;
+            this.btnGoFrmMusteriEkle.Location = new System.Drawing.Point(135, 66);
             this.btnGoFrmMusteriEkle.Name = "btnGoFrmMusteriEkle";
             this.btnGoFrmMusteriEkle.Size = new System.Drawing.Size(277, 145);
             this.btnGoFrmMusteriEkle.TabIndex = 0;
@@ -49,8 +49,8 @@
             // 
             // btnGoFrmMusteriGor
             // 
-            this.btnGoFrmMusteriGor.BackColor = System.Drawing.Color.DodgerBlue;
-            this.btnGoFrmMusteriGor.Location = new System.Drawing.Point(80, 205);
+            this.btnGoFrmMusteriGor.BackColor = System.Drawing.Color.YellowGreen;
+            this.btnGoFrmMusteriGor.Location = new System.Drawing.Point(135, 239);
             this.btnGoFrmMusteriGor.Name = "btnGoFrmMusteriGor";
             this.btnGoFrmMusteriGor.Size = new System.Drawing.Size(277, 145);
             this.btnGoFrmMusteriGor.TabIndex = 1;
@@ -60,8 +60,8 @@
             // 
             // btnGoFrmOdalar
             // 
-            this.btnGoFrmOdalar.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnGoFrmOdalar.Location = new System.Drawing.Point(383, 205);
+            this.btnGoFrmOdalar.BackColor = System.Drawing.Color.YellowGreen;
+            this.btnGoFrmOdalar.Location = new System.Drawing.Point(438, 239);
             this.btnGoFrmOdalar.Name = "btnGoFrmOdalar";
             this.btnGoFrmOdalar.Size = new System.Drawing.Size(277, 145);
             this.btnGoFrmOdalar.TabIndex = 2;
@@ -71,8 +71,8 @@
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.GreenYellow;
-            this.button1.Location = new System.Drawing.Point(383, 32);
+            this.button1.BackColor = System.Drawing.Color.YellowGreen;
+            this.button1.Location = new System.Drawing.Point(438, 66);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(277, 145);
             this.button1.TabIndex = 3;
@@ -82,8 +82,8 @@
             // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.Color.SteelBlue;
-            this.button2.Location = new System.Drawing.Point(686, 205);
+            this.button2.BackColor = System.Drawing.Color.YellowGreen;
+            this.button2.Location = new System.Drawing.Point(741, 239);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(277, 145);
             this.button2.TabIndex = 4;
@@ -93,12 +93,13 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(686, 32);
+            this.button3.BackColor = System.Drawing.Color.YellowGreen;
+            this.button3.Location = new System.Drawing.Point(741, 66);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(277, 145);
             this.button3.TabIndex = 5;
             this.button3.Text = "Personel Ekle";
-            this.button3.UseVisualStyleBackColor = true;
+            this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // frmAnaMenu
