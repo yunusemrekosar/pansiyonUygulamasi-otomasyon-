@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Data.Sql;
+using System.Runtime.Remoting.Channels;
 
 namespace pansiyonOtomasyonuV1
 {
@@ -26,17 +27,19 @@ namespace pansiyonOtomasyonuV1
             txtOdaNu.Text = button.Text;
             button.BackColor = Color.Tomato;
             button.Enabled = false;
+
         }
 
+        
         private void doldurbosalt(Button button, string cikis = "1000/01/01")
         {
-            button.BackColor = Color.Tomato;
-            button.Enabled = false;
+            button.BackColor = Color.FromArgb(128, 255, 128);
+            button.Enabled = true;
 
-            if (Convert.ToDateTime(cikis) < DateTime.Now)
+            if (Convert.ToDateTime(cikis) > DateTime.Now)
             {
-                button.BackColor = Color.FromArgb(128, 255, 128);
-                button.Enabled = true;
+                button.BackColor = Color.Tomato;
+                button.Enabled = false;
             }
         }
 
@@ -178,6 +181,7 @@ namespace pansiyonOtomasyonuV1
                 lblSonuc.Text = txtAdi.Text + " " + txtSoyadi.Text + " Adlı Müşteri eklendi";
                 kutularıbosalt();
                 MusteriEkle_Load(sender, e);
+                
             }
             catch (Exception hata)
             {

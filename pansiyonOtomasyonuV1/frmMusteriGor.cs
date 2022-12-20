@@ -151,8 +151,7 @@ namespace pansiyonOtomasyonuV1
 
             if (comboBox2.Text == "Ad")
             {
-                SqlCommand ara = new SqlCommand("Select * from TBLmusteriler where adi like '%@ara%' ", baglanti);
-                ara.Parameters.AddWithValue("@ara", txtAra.Text);
+                SqlCommand ara = new SqlCommand("Select * from TBLmusteriler where adi like '%"+txtAra.Text+"%' ", baglanti);
                 SqlDataReader oku = ara.ExecuteReader();
                 while (oku.Read())
                 {
@@ -188,8 +187,7 @@ namespace pansiyonOtomasyonuV1
 
             if (comboBox2.Text == "Soyad")
             {
-                SqlCommand ara = new SqlCommand("Select * from TBLmusteriler where soyadi like '%@ara%'", baglanti);
-                ara.Parameters.AddWithValue("@ara", txtAra.Text);
+                SqlCommand ara = new SqlCommand("Select * from TBLmusteriler where soyadi like '%"+txtAra.Text+"%'", baglanti);
                 SqlDataReader oku = ara.ExecuteReader();
                 while (oku.Read())
                 {
@@ -225,8 +223,7 @@ namespace pansiyonOtomasyonuV1
 
             if (comboBox2.Text == "TC Kimlik")
             {
-                SqlCommand ara = new SqlCommand("Select * from TBLmusteriler where tcKimlikNu like '%@ara%'", baglanti);
-                ara.Parameters.AddWithValue("@ara", txtAra.Text);
+                SqlCommand ara = new SqlCommand("Select * from TBLmusteriler where tcKimlikNu like '%"+txtAra.Text+"%'", baglanti);
                 SqlDataReader oku = ara.ExecuteReader();
                 while (oku.Read())
                 {
