@@ -20,8 +20,7 @@ namespace pansiyonOtomasyonuV1
         private void btnGoFrmMusteriEkle_Click(object sender, EventArgs e)
         {
             MusteriEkle musteriekle = new MusteriEkle();
-            musteriekle.StartPosition = FormStartPosition.Manual;
-            musteriekle.Location = new Point(104, 104);
+            musteriekle.StartPosition = FormStartPosition.CenterScreen;
             musteriekle.Show();
             this.Hide();
         }
@@ -29,8 +28,7 @@ namespace pansiyonOtomasyonuV1
         private void btnGoFrmOdalar_Click(object sender, EventArgs e)
         {
             frmOdalar odalar = new frmOdalar();
-            odalar.StartPosition = FormStartPosition.Manual;
-            odalar.Location = new Point(104, 104);
+            odalar.StartPosition = FormStartPosition.CenterScreen;
             odalar.Show();
             this.Hide();
         }
@@ -38,8 +36,7 @@ namespace pansiyonOtomasyonuV1
         private void btnGoFrmMusteriGor_Click(object sender, EventArgs e)
         {
             frmMusteriGor musteriGor= new frmMusteriGor();
-            musteriGor.StartPosition = FormStartPosition.Manual;
-            musteriGor.Location = new Point(104, 104);
+            musteriGor.StartPosition = FormStartPosition.CenterScreen;
             musteriGor.Show();
             this.Hide();
         }
@@ -47,8 +44,7 @@ namespace pansiyonOtomasyonuV1
         private void button2_Click(object sender, EventArgs e)
         {
             frmGelirGider gelirGider= new frmGelirGider();
-            gelirGider.StartPosition = FormStartPosition.Manual;
-            gelirGider.Location = new Point(104, 104);
+            gelirGider.StartPosition = FormStartPosition.CenterScreen;
             gelirGider.Show();
             this.Hide();
         }
@@ -56,9 +52,7 @@ namespace pansiyonOtomasyonuV1
         private void button1_Click(object sender, EventArgs e)
         {
             frmStok stok= new frmStok();
-            stok.StartPosition = FormStartPosition.Manual;
-            stok.Location = new Point(104, 104);
-            stok.Location = this.Location;
+            stok.StartPosition = FormStartPosition.CenterScreen;
             stok.Show();
             this.Hide();
         }
@@ -70,7 +64,10 @@ namespace pansiyonOtomasyonuV1
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            frmPersonelEkle personelEkle = new frmPersonelEkle();
+            personelEkle.StartPosition= FormStartPosition.CenterScreen;
+            personelEkle.Show();
+            this.Hide();
         }
     }
 }

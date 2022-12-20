@@ -50,11 +50,11 @@ namespace pansiyonOtomasyonuV1
                 }
                 if (oku["Cinsiyet"].ToString() == "Kadın")
                 {
-                    ekle.BackColor = Color.Tomato;
+                    ekle.BackColor = Color.LightPink;
                 }
                 if (oku["Cinsiyet"].ToString() == "Diğer")
                 {
-                    ekle.BackColor = Color.White;
+                    ekle.BackColor = Color.LightYellow;
 
                 }
                 lstMusteriler.Items.Add(ekle);
@@ -65,8 +65,7 @@ namespace pansiyonOtomasyonuV1
         private void button4_Click(object sender, EventArgs e)
         {
             frmAnaMenu anaMenu = new frmAnaMenu();
-            anaMenu.StartPosition = FormStartPosition.Manual;
-            anaMenu.Location = new Point(104, 104);
+            anaMenu.StartPosition = FormStartPosition.CenterScreen;
             anaMenu.Show();
             this.Hide();
         }
@@ -101,11 +100,11 @@ namespace pansiyonOtomasyonuV1
             {
                 comboBox1.Text = "Erkek";
             }
-            if (lstMusteriler.SelectedItems[0].BackColor == Color.Tomato)
+            if (lstMusteriler.SelectedItems[0].BackColor == Color.LightPink)
             {
                 comboBox1.Text = "Kadın";
             }
-            else
+            if (lstMusteriler.SelectedItems[0].BackColor == Color.LightYellow)
             {
                 comboBox1.Text = "Diğer";
             }
@@ -172,11 +171,11 @@ namespace pansiyonOtomasyonuV1
                     }
                     if (oku["Cinsiyet"].ToString() == "Kadın")
                     {
-                        ekle.BackColor = Color.Tomato;
+                        ekle.BackColor = Color.LightPink;
                     }
                     if (oku["Cinsiyet"].ToString() == "Diğer")
                     {
-                        ekle.BackColor = Color.White;
+                        ekle.BackColor = Color.LightYellow;
 
                     }
                     lstMusteriler.Items.Add(ekle);
@@ -208,11 +207,11 @@ namespace pansiyonOtomasyonuV1
                     }
                     if (oku["Cinsiyet"].ToString() == "Kadın")
                     {
-                        ekle.BackColor = Color.Tomato;
+                        ekle.BackColor = Color.LightPink;
                     }
                     if (oku["Cinsiyet"].ToString() == "Diğer")
                     {
-                        ekle.BackColor = Color.White;
+                        ekle.BackColor = Color.LightYellow;
 
                     }
                     lstMusteriler.Items.Add(ekle);
@@ -244,11 +243,11 @@ namespace pansiyonOtomasyonuV1
                     }
                     if (oku["Cinsiyet"].ToString() == "Kadın")
                     {
-                        ekle.BackColor = Color.Tomato;
+                        ekle.BackColor = Color.LightPink;
                     }
                     if (oku["Cinsiyet"].ToString() == "Diğer")
                     {
-                        ekle.BackColor = Color.White;
+                        ekle.BackColor = Color.LightYellow;
 
                     }
                     lstMusteriler.Items.Add(ekle);

@@ -29,24 +29,28 @@
         private void InitializeComponent()
         {
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lbl3Aylık = new System.Windows.Forms.Label();
             this.lbl3AylıkMutfak = new System.Windows.Forms.Label();
             this.lbl3AylıkCalısan = new System.Windows.Forms.Label();
             this.lbl3AylıkFatura = new System.Windows.Forms.Label();
             this.lbl3AylıkVergi = new System.Windows.Forms.Label();
             this.lbl3AylıkGelir = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.lbl6Aylık = new System.Windows.Forms.Label();
             this.lbl6AylıkMutfak = new System.Windows.Forms.Label();
             this.lbl6AylıkCalısan = new System.Windows.Forms.Label();
             this.lbl6AylıkFatura = new System.Windows.Forms.Label();
             this.lbl6AylıkVergi = new System.Windows.Forms.Label();
             this.lbl6AylıkGelir = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblYıllık = new System.Windows.Forms.Label();
             this.lblYıllıkMutfak = new System.Windows.Forms.Label();
             this.lblYıllıkCalısan = new System.Windows.Forms.Label();
             this.lblYıllıkFatura = new System.Windows.Forms.Label();
             this.lblYıllıkVergi = new System.Windows.Forms.Label();
             this.lblYıllıkGelir = new System.Windows.Forms.Label();
             this.grbAylık = new System.Windows.Forms.GroupBox();
+            this.lblAylık = new System.Windows.Forms.Label();
             this.lblAylıkMutfak = new System.Windows.Forms.Label();
             this.lblAylıkFatura = new System.Windows.Forms.Label();
             this.lblAylıkVergi = new System.Windows.Forms.Label();
@@ -58,10 +62,7 @@
             this.dtpTarih = new System.Windows.Forms.DateTimePicker();
             this.btnKaydet = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.lblAylık = new System.Windows.Forms.Label();
-            this.lbl6Aylık = new System.Windows.Forms.Label();
-            this.lblYıllık = new System.Windows.Forms.Label();
-            this.lbl3Aylık = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -83,10 +84,19 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Üç Aylık Gelir Gider Tablosu";
             // 
+            // lbl3Aylık
+            // 
+            this.lbl3Aylık.AutoSize = true;
+            this.lbl3Aylık.Location = new System.Drawing.Point(260, 28);
+            this.lbl3Aylık.Name = "lbl3Aylık";
+            this.lbl3Aylık.Size = new System.Drawing.Size(49, 22);
+            this.lbl3Aylık.TabIndex = 12;
+            this.lbl3Aylık.Text = "___";
+            // 
             // lbl3AylıkMutfak
             // 
             this.lbl3AylıkMutfak.AutoSize = true;
-            this.lbl3AylıkMutfak.Location = new System.Drawing.Point(33, 98);
+            this.lbl3AylıkMutfak.Location = new System.Drawing.Point(33, 93);
             this.lbl3AylıkMutfak.Name = "lbl3AylıkMutfak";
             this.lbl3AylıkMutfak.Size = new System.Drawing.Size(49, 22);
             this.lbl3AylıkMutfak.TabIndex = 1;
@@ -95,7 +105,7 @@
             // lbl3AylıkCalısan
             // 
             this.lbl3AylıkCalısan.AutoSize = true;
-            this.lbl3AylıkCalısan.Location = new System.Drawing.Point(33, 65);
+            this.lbl3AylıkCalısan.Location = new System.Drawing.Point(33, 60);
             this.lbl3AylıkCalısan.Name = "lbl3AylıkCalısan";
             this.lbl3AylıkCalısan.Size = new System.Drawing.Size(49, 22);
             this.lbl3AylıkCalısan.TabIndex = 0;
@@ -104,7 +114,7 @@
             // lbl3AylıkFatura
             // 
             this.lbl3AylıkFatura.AutoSize = true;
-            this.lbl3AylıkFatura.Location = new System.Drawing.Point(33, 134);
+            this.lbl3AylıkFatura.Location = new System.Drawing.Point(33, 129);
             this.lbl3AylıkFatura.Name = "lbl3AylıkFatura";
             this.lbl3AylıkFatura.Size = new System.Drawing.Size(49, 22);
             this.lbl3AylıkFatura.TabIndex = 2;
@@ -113,7 +123,7 @@
             // lbl3AylıkVergi
             // 
             this.lbl3AylıkVergi.AutoSize = true;
-            this.lbl3AylıkVergi.Location = new System.Drawing.Point(33, 168);
+            this.lbl3AylıkVergi.Location = new System.Drawing.Point(33, 163);
             this.lbl3AylıkVergi.Name = "lbl3AylıkVergi";
             this.lbl3AylıkVergi.Size = new System.Drawing.Size(49, 22);
             this.lbl3AylıkVergi.TabIndex = 3;
@@ -122,7 +132,7 @@
             // lbl3AylıkGelir
             // 
             this.lbl3AylıkGelir.AutoSize = true;
-            this.lbl3AylıkGelir.Location = new System.Drawing.Point(33, 33);
+            this.lbl3AylıkGelir.Location = new System.Drawing.Point(33, 28);
             this.lbl3AylıkGelir.Name = "lbl3AylıkGelir";
             this.lbl3AylıkGelir.Size = new System.Drawing.Size(49, 22);
             this.lbl3AylıkGelir.TabIndex = 5;
@@ -143,10 +153,19 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Altı Aylık Gelir Gider Tablosu";
             // 
+            // lbl6Aylık
+            // 
+            this.lbl6Aylık.AutoSize = true;
+            this.lbl6Aylık.Location = new System.Drawing.Point(230, 29);
+            this.lbl6Aylık.Name = "lbl6Aylık";
+            this.lbl6Aylık.Size = new System.Drawing.Size(49, 22);
+            this.lbl6Aylık.TabIndex = 12;
+            this.lbl6Aylık.Text = "___";
+            // 
             // lbl6AylıkMutfak
             // 
             this.lbl6AylıkMutfak.AutoSize = true;
-            this.lbl6AylıkMutfak.Location = new System.Drawing.Point(39, 90);
+            this.lbl6AylıkMutfak.Location = new System.Drawing.Point(39, 92);
             this.lbl6AylıkMutfak.Name = "lbl6AylıkMutfak";
             this.lbl6AylıkMutfak.Size = new System.Drawing.Size(49, 22);
             this.lbl6AylıkMutfak.TabIndex = 1;
@@ -155,7 +174,7 @@
             // lbl6AylıkCalısan
             // 
             this.lbl6AylıkCalısan.AutoSize = true;
-            this.lbl6AylıkCalısan.Location = new System.Drawing.Point(39, 59);
+            this.lbl6AylıkCalısan.Location = new System.Drawing.Point(39, 61);
             this.lbl6AylıkCalısan.Name = "lbl6AylıkCalısan";
             this.lbl6AylıkCalısan.Size = new System.Drawing.Size(49, 22);
             this.lbl6AylıkCalısan.TabIndex = 0;
@@ -164,7 +183,7 @@
             // lbl6AylıkFatura
             // 
             this.lbl6AylıkFatura.AutoSize = true;
-            this.lbl6AylıkFatura.Location = new System.Drawing.Point(39, 124);
+            this.lbl6AylıkFatura.Location = new System.Drawing.Point(39, 126);
             this.lbl6AylıkFatura.Name = "lbl6AylıkFatura";
             this.lbl6AylıkFatura.Size = new System.Drawing.Size(49, 22);
             this.lbl6AylıkFatura.TabIndex = 2;
@@ -173,7 +192,7 @@
             // lbl6AylıkVergi
             // 
             this.lbl6AylıkVergi.AutoSize = true;
-            this.lbl6AylıkVergi.Location = new System.Drawing.Point(39, 158);
+            this.lbl6AylıkVergi.Location = new System.Drawing.Point(39, 160);
             this.lbl6AylıkVergi.Name = "lbl6AylıkVergi";
             this.lbl6AylıkVergi.Size = new System.Drawing.Size(49, 22);
             this.lbl6AylıkVergi.TabIndex = 3;
@@ -182,7 +201,7 @@
             // lbl6AylıkGelir
             // 
             this.lbl6AylıkGelir.AutoSize = true;
-            this.lbl6AylıkGelir.Location = new System.Drawing.Point(39, 27);
+            this.lbl6AylıkGelir.Location = new System.Drawing.Point(39, 29);
             this.lbl6AylıkGelir.Name = "lbl6AylıkGelir";
             this.lbl6AylıkGelir.Size = new System.Drawing.Size(49, 22);
             this.lbl6AylıkGelir.TabIndex = 5;
@@ -202,6 +221,15 @@
             this.groupBox1.TabIndex = 20;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Yıllık Gelir Gider Tablosu";
+            // 
+            // lblYıllık
+            // 
+            this.lblYıllık.AutoSize = true;
+            this.lblYıllık.Location = new System.Drawing.Point(260, 29);
+            this.lblYıllık.Name = "lblYıllık";
+            this.lblYıllık.Size = new System.Drawing.Size(49, 22);
+            this.lblYıllık.TabIndex = 13;
+            this.lblYıllık.Text = "___";
             // 
             // lblYıllıkMutfak
             // 
@@ -263,10 +291,19 @@
             this.grbAylık.TabStop = false;
             this.grbAylık.Text = "Aylık Gelir Gider Tablosu";
             // 
+            // lblAylık
+            // 
+            this.lblAylık.AutoSize = true;
+            this.lblAylık.Location = new System.Drawing.Point(230, 27);
+            this.lblAylık.Name = "lblAylık";
+            this.lblAylık.Size = new System.Drawing.Size(49, 22);
+            this.lblAylık.TabIndex = 11;
+            this.lblAylık.Text = "___";
+            // 
             // lblAylıkMutfak
             // 
             this.lblAylıkMutfak.AutoSize = true;
-            this.lblAylıkMutfak.Location = new System.Drawing.Point(39, 96);
+            this.lblAylıkMutfak.Location = new System.Drawing.Point(39, 95);
             this.lblAylıkMutfak.Name = "lblAylıkMutfak";
             this.lblAylıkMutfak.Size = new System.Drawing.Size(49, 22);
             this.lblAylıkMutfak.TabIndex = 1;
@@ -275,7 +312,7 @@
             // lblAylıkFatura
             // 
             this.lblAylıkFatura.AutoSize = true;
-            this.lblAylıkFatura.Location = new System.Drawing.Point(39, 130);
+            this.lblAylıkFatura.Location = new System.Drawing.Point(39, 129);
             this.lblAylıkFatura.Name = "lblAylıkFatura";
             this.lblAylıkFatura.Size = new System.Drawing.Size(49, 22);
             this.lblAylıkFatura.TabIndex = 2;
@@ -284,7 +321,7 @@
             // lblAylıkVergi
             // 
             this.lblAylıkVergi.AutoSize = true;
-            this.lblAylıkVergi.Location = new System.Drawing.Point(39, 164);
+            this.lblAylıkVergi.Location = new System.Drawing.Point(39, 163);
             this.lblAylıkVergi.Name = "lblAylıkVergi";
             this.lblAylıkVergi.Size = new System.Drawing.Size(49, 22);
             this.lblAylıkVergi.TabIndex = 3;
@@ -293,7 +330,7 @@
             // lblAylıkCalısan
             // 
             this.lblAylıkCalısan.AutoSize = true;
-            this.lblAylıkCalısan.Location = new System.Drawing.Point(39, 60);
+            this.lblAylıkCalısan.Location = new System.Drawing.Point(39, 59);
             this.lblAylıkCalısan.Name = "lblAylıkCalısan";
             this.lblAylıkCalısan.Size = new System.Drawing.Size(49, 22);
             this.lblAylıkCalısan.TabIndex = 0;
@@ -302,7 +339,7 @@
             // lblAylıkGelir
             // 
             this.lblAylıkGelir.AutoSize = true;
-            this.lblAylıkGelir.Location = new System.Drawing.Point(39, 28);
+            this.lblAylıkGelir.Location = new System.Drawing.Point(39, 27);
             this.lblAylıkGelir.Name = "lblAylıkGelir";
             this.lblAylıkGelir.Size = new System.Drawing.Size(49, 22);
             this.lblAylıkGelir.TabIndex = 5;
@@ -311,7 +348,7 @@
             // btnAnaMenuyeDon
             // 
             this.btnAnaMenuyeDon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.btnAnaMenuyeDon.Location = new System.Drawing.Point(938, 16);
+            this.btnAnaMenuyeDon.Location = new System.Drawing.Point(938, 26);
             this.btnAnaMenuyeDon.Name = "btnAnaMenuyeDon";
             this.btnAnaMenuyeDon.Size = new System.Drawing.Size(222, 85);
             this.btnAnaMenuyeDon.TabIndex = 21;
@@ -327,21 +364,21 @@
             "Su",
             "Doğalgaz",
             "İnternet"});
-            this.cbFaturaAdi.Location = new System.Drawing.Point(938, 144);
+            this.cbFaturaAdi.Location = new System.Drawing.Point(938, 216);
             this.cbFaturaAdi.Name = "cbFaturaAdi";
             this.cbFaturaAdi.Size = new System.Drawing.Size(144, 30);
             this.cbFaturaAdi.TabIndex = 24;
             // 
             // txtFaturaTutari
             // 
-            this.txtFaturaTutari.Location = new System.Drawing.Point(1088, 144);
+            this.txtFaturaTutari.Location = new System.Drawing.Point(1088, 217);
             this.txtFaturaTutari.Name = "txtFaturaTutari";
             this.txtFaturaTutari.Size = new System.Drawing.Size(72, 29);
             this.txtFaturaTutari.TabIndex = 23;
             // 
             // dtpTarih
             // 
-            this.dtpTarih.Location = new System.Drawing.Point(938, 107);
+            this.dtpTarih.Location = new System.Drawing.Point(938, 179);
             this.dtpTarih.Name = "dtpTarih";
             this.dtpTarih.Size = new System.Drawing.Size(222, 29);
             this.dtpTarih.TabIndex = 22;
@@ -349,7 +386,7 @@
             // btnKaydet
             // 
             this.btnKaydet.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.btnKaydet.Location = new System.Drawing.Point(938, 179);
+            this.btnKaydet.Location = new System.Drawing.Point(938, 251);
             this.btnKaydet.Name = "btnKaydet";
             this.btnKaydet.Size = new System.Drawing.Size(222, 53);
             this.btnKaydet.TabIndex = 26;
@@ -360,47 +397,22 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(946, 252);
+            this.label1.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.label1.Location = new System.Drawing.Point(940, 311);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(49, 22);
             this.label1.TabIndex = 11;
             this.label1.Text = "___";
             // 
-            // lblAylık
+            // label2
             // 
-            this.lblAylık.AutoSize = true;
-            this.lblAylık.Location = new System.Drawing.Point(230, 31);
-            this.lblAylık.Name = "lblAylık";
-            this.lblAylık.Size = new System.Drawing.Size(49, 22);
-            this.lblAylık.TabIndex = 11;
-            this.lblAylık.Text = "___";
-            // 
-            // lbl6Aylık
-            // 
-            this.lbl6Aylık.AutoSize = true;
-            this.lbl6Aylık.Location = new System.Drawing.Point(230, 27);
-            this.lbl6Aylık.Name = "lbl6Aylık";
-            this.lbl6Aylık.Size = new System.Drawing.Size(49, 22);
-            this.lbl6Aylık.TabIndex = 12;
-            this.lbl6Aylık.Text = "___";
-            // 
-            // lblYıllık
-            // 
-            this.lblYıllık.AutoSize = true;
-            this.lblYıllık.Location = new System.Drawing.Point(260, 27);
-            this.lblYıllık.Name = "lblYıllık";
-            this.lblYıllık.Size = new System.Drawing.Size(49, 22);
-            this.lblYıllık.TabIndex = 13;
-            this.lblYıllık.Text = "___";
-            // 
-            // lbl3Aylık
-            // 
-            this.lbl3Aylık.AutoSize = true;
-            this.lbl3Aylık.Location = new System.Drawing.Point(260, 33);
-            this.lbl3Aylık.Name = "lbl3Aylık";
-            this.lbl3Aylık.Size = new System.Drawing.Size(49, 22);
-            this.lbl3Aylık.TabIndex = 12;
-            this.lbl3Aylık.Text = "___";
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.label2.Location = new System.Drawing.Point(940, 145);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(142, 22);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "Fatura Girişi:";
             // 
             // frmGelirGider
             // 
@@ -408,6 +420,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.CadetBlue;
             this.ClientSize = new System.Drawing.Size(1172, 472);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnKaydet);
             this.Controls.Add(this.txtFaturaTutari);
@@ -421,6 +434,8 @@
             this.Font = new System.Drawing.Font("Verdana", 10.8F, System.Drawing.FontStyle.Bold);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmGelirGider";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gelir:";
@@ -475,5 +490,6 @@
         private System.Windows.Forms.Label lbl6Aylık;
         private System.Windows.Forms.Label lblYıllık;
         private System.Windows.Forms.Label lblAylık;
+        private System.Windows.Forms.Label label2;
     }
 }

@@ -86,13 +86,13 @@
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(117, 32);
+            this.label1.Location = new System.Drawing.Point(124, 32);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(44, 22);
             this.label1.TabIndex = 0;
             this.label1.Text = "Ad:";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // txtAdi
             // 
@@ -156,13 +156,13 @@
             // 
             // label10
             // 
-            this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(71, 103);
             this.label10.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(98, 22);
             this.label10.TabIndex = 32;
             this.label10.Text = "Cinsiyet:";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // txtOdaNu
             // 
@@ -175,13 +175,13 @@
             // 
             // label9
             // 
-            this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(77, 297);
             this.label9.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(91, 22);
             this.label9.TabIndex = 30;
             this.label9.Text = "Oda Nu:";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // dtpCikis
             // 
@@ -201,23 +201,23 @@
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(44, 261);
             this.label6.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(124, 22);
             this.label6.TabIndex = 10;
             this.label6.Text = "Oda Ücreti:";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(16, 221);
             this.label5.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(152, 22);
             this.label5.TabIndex = 8;
             this.label5.Text = "T.C Kimlik Nu:";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // txtMail
             // 
@@ -229,23 +229,23 @@
             // 
             // label8
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(39, 370);
+            this.label8.Location = new System.Drawing.Point(39, 368);
             this.label8.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(129, 22);
             this.label8.TabIndex = 14;
             this.label8.Text = "Çıkış Tarihi:";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(110, 177);
             this.label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(58, 22);
             this.label4.TabIndex = 6;
             this.label4.Text = "Mail:";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // dtpGiris
             // 
@@ -256,13 +256,13 @@
             // 
             // label7
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(40, 337);
+            this.label7.Location = new System.Drawing.Point(40, 335);
             this.label7.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(128, 22);
             this.label7.TabIndex = 12;
             this.label7.Text = "Giriş Tarihi:";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // txtTcKimlikNu
             // 
@@ -275,13 +275,13 @@
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(42, 141);
             this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(126, 22);
             this.label3.TabIndex = 4;
             this.label3.Text = "Telefon Nu:";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // txtSoyadi
             // 
@@ -293,13 +293,13 @@
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(89, 68);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(79, 22);
             this.label2.TabIndex = 2;
             this.label2.Text = "Soyad:";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // groupBox2
             // 
@@ -645,12 +645,12 @@
             // 
             // lblSonuc
             // 
-            this.lblSonuc.AutoSize = true;
             this.lblSonuc.Location = new System.Drawing.Point(48, 429);
             this.lblSonuc.Name = "lblSonuc";
             this.lblSonuc.Size = new System.Drawing.Size(49, 22);
             this.lblSonuc.TabIndex = 28;
             this.lblSonuc.Text = "___";
+            this.lblSonuc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // btnGoAnaMenu
             // 
@@ -676,7 +676,10 @@
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Verdana", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "MusteriEkle";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Müşteri Ekle";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MusteriEkle_FormClosed);
             this.Load += new System.EventHandler(this.MusteriEkle_Load);
@@ -684,7 +687,6 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

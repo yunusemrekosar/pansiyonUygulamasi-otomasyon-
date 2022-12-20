@@ -353,7 +353,10 @@
             this.Controls.Add(this.btn303);
             this.Font = new System.Drawing.Font("Verdana", 10.8F, System.Drawing.FontStyle.Bold);
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmOdalar";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Odalar";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmOdalar_FormClosed);
             this.Load += new System.EventHandler(this.frmOdalar_Load);

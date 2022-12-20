@@ -209,14 +209,14 @@
             // 
             // label10
             // 
-            this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
-            this.label10.Location = new System.Drawing.Point(104, 97);
+            this.label10.Location = new System.Drawing.Point(104, 93);
             this.label10.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(92, 20);
             this.label10.TabIndex = 52;
             this.label10.Text = "Cinsiyet:";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // txtOdaNu
             // 
@@ -230,7 +230,6 @@
             // 
             // label9
             // 
-            this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
             this.label9.Location = new System.Drawing.Point(583, 55);
             this.label9.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
@@ -238,6 +237,7 @@
             this.label9.Size = new System.Drawing.Size(85, 20);
             this.label9.TabIndex = 50;
             this.label9.Text = "Oda Nu:";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // dtpCikis
             // 
@@ -252,7 +252,7 @@
             // txtOdaUcreti
             // 
             this.txtOdaUcreti.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
-            this.txtOdaUcreti.Location = new System.Drawing.Point(671, 15);
+            this.txtOdaUcreti.Location = new System.Drawing.Point(672, 15);
             this.txtOdaUcreti.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.txtOdaUcreti.Name = "txtOdaUcreti";
             this.txtOdaUcreti.Size = new System.Drawing.Size(291, 28);
@@ -260,7 +260,6 @@
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
             this.label6.Location = new System.Drawing.Point(551, 18);
             this.label6.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
@@ -268,17 +267,18 @@
             this.label6.Size = new System.Drawing.Size(116, 20);
             this.label6.TabIndex = 44;
             this.label6.Text = "Oda Ücreti:";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
-            this.label5.Location = new System.Drawing.Point(52, 211);
+            this.label5.Location = new System.Drawing.Point(52, 210);
             this.label5.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(144, 20);
             this.label5.TabIndex = 43;
             this.label5.Text = "T.C Kimlik Nu:";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // txtMail
             // 
@@ -291,25 +291,25 @@
             // 
             // label8
             // 
-            this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
-            this.label8.Location = new System.Drawing.Point(547, 128);
+            this.label8.Location = new System.Drawing.Point(547, 126);
             this.label8.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(122, 20);
             this.label8.TabIndex = 47;
             this.label8.Text = "Çıkış Tarihi:";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
-            this.label4.Location = new System.Drawing.Point(140, 171);
+            this.label4.Location = new System.Drawing.Point(140, 170);
             this.label4.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(55, 20);
             this.label4.TabIndex = 41;
             this.label4.Text = "Mail:";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // dtpGiris
             // 
@@ -323,14 +323,14 @@
             // 
             // label7
             // 
-            this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
-            this.label7.Location = new System.Drawing.Point(547, 91);
+            this.label7.Location = new System.Drawing.Point(547, 89);
             this.label7.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(121, 20);
             this.label7.TabIndex = 46;
             this.label7.Text = "Giriş Tarihi:";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // txtTcKimlikNu
             // 
@@ -344,14 +344,14 @@
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
-            this.label3.Location = new System.Drawing.Point(76, 131);
+            this.label3.Location = new System.Drawing.Point(76, 130);
             this.label3.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(119, 20);
             this.label3.TabIndex = 39;
             this.label3.Text = "Telefon Nu:";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // txtSoyadi
             // 
@@ -364,14 +364,14 @@
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(121, 56);
+            this.label2.Location = new System.Drawing.Point(121, 55);
             this.label2.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(74, 20);
             this.label2.TabIndex = 37;
             this.label2.Text = "Soyad:";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // txtAdi
             // 
@@ -384,14 +384,14 @@
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(154, 20);
+            this.label1.Location = new System.Drawing.Point(154, 19);
             this.label1.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 20);
             this.label1.TabIndex = 35;
             this.label1.Text = "Ad:";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // btnAra
             // 
@@ -447,7 +447,7 @@
             // cbTarihiAktiflestir
             // 
             this.cbTarihiAktiflestir.AutoSize = true;
-            this.cbTarihiAktiflestir.Font = new System.Drawing.Font("Verdana", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.cbTarihiAktiflestir.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
             this.cbTarihiAktiflestir.Location = new System.Drawing.Point(970, 17);
             this.cbTarihiAktiflestir.Name = "cbTarihiAktiflestir";
             this.cbTarihiAktiflestir.Size = new System.Drawing.Size(186, 24);
@@ -494,7 +494,10 @@
             this.Font = new System.Drawing.Font("Verdana", 10.8F, System.Drawing.FontStyle.Bold);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmMusteriGor";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Müsteri Gör";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMusteriGor_FormClosed);
             this.ResumeLayout(false);

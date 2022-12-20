@@ -96,7 +96,10 @@
             this.Controls.Add(this.button1);
             this.Font = new System.Drawing.Font("Verdana", 10.8F, System.Drawing.FontStyle.Bold);
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "giris";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "giris";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.giris_FormClosed);
             this.ResumeLayout(false);

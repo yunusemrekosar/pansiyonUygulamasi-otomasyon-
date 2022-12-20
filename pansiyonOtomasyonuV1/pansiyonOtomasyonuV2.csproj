@@ -71,6 +71,12 @@
     <Compile Include="frmOdalar.Designer.cs">
       <DependentUpon>frmOdalar.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmPersonelEkle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPersonelEkle.Designer.cs">
+      <DependentUpon>frmPersonelEkle.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmStok.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,6 +108,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmOdalar.resx">
       <DependentUpon>frmOdalar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPersonelEkle.resx">
+      <DependentUpon>frmPersonelEkle.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmStok.resx">
       <DependentUpon>frmStok.cs</DependentUpon>

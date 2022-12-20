@@ -38,8 +38,7 @@ namespace pansiyonOtomasyonuV1
         private void button1_Click(object sender, EventArgs e)
         {
             frmAnaMenu anaMenu = new frmAnaMenu();
-            anaMenu.StartPosition = FormStartPosition.Manual;
-            anaMenu.Location = new Point(104, 104);
+            anaMenu.StartPosition = FormStartPosition.CenterScreen;
             anaMenu.Show();
             this.Hide();
         }

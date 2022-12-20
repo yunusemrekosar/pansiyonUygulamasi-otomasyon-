@@ -753,7 +753,10 @@
             this.Controls.Add(this.boxYeniGiris);
             this.Font = new System.Drawing.Font("Verdana", 10.8F, System.Drawing.FontStyle.Bold);
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmStok";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmStok";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmStok_FormClosed);
             this.Load += new System.EventHandler(this.frmStok_Load);
