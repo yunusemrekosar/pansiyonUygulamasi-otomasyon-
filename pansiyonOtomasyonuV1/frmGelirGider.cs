@@ -33,6 +33,8 @@ namespace pansiyonOtomasyonuV1
                 SqlCommand komut = new SqlCommand("select sum(" + kolon + ") from [" + tablo + "] where " + tarihkolonu + " between '" + tarih1 + "' and '" + tarih2 + "'", baglanti);
 
 
+
+
                 sonuc += Convert.ToInt32(komut.ExecuteScalar());
 
             }
@@ -50,16 +52,16 @@ namespace pansiyonOtomasyonuV1
         private void frmGelirGider_Load(object sender, EventArgs e)
         {
 
-            decimal gaylık = Hesapla("TBLmusteriler", "odaUcreti", 1, "cikisTarihi");
+            decimal gaylık = Hesapla("TBLmusteriler", "odaUcreti", 1, "girisTarihi");
             string gaylıks = gaylık.ToString();
             gaylıks = String.Format("{0:n0}", gaylık);
-            decimal gaylık3 = Hesapla("TBLmusteriler", "odaUcreti", 3, "cikisTarihi");
+            decimal gaylık3 = Hesapla("TBLmusteriler", "odaUcreti", 3, "girisTarihi");
             string gaylık3s = gaylık3.ToString();
             gaylık3s = String.Format("{0:n0}", gaylık3);
-            decimal gaylık6 = Hesapla("TBLmusteriler", "odaUcreti", 6, "cikisTarihi");
+            decimal gaylık6 = Hesapla("TBLmusteriler", "odaUcreti", 6, "girisTarihi");
             string gaylık6s = gaylık6.ToString();
             gaylık6s = String.Format("{0:n0}", gaylık6);
-            decimal gyıllık = Hesapla("TBLmusteriler", "odaUcreti", 12, "cikisTarihi");
+            decimal gyıllık = Hesapla("TBLmusteriler", "odaUcreti", 12, "girisTarihi");
             string gyıllıks = gyıllık.ToString();
             gyıllıks = String.Format("{0:n0}", gyıllık);
             lblAylıkGelir.Text = "Gelir:" + "  " + gaylıks;
@@ -154,7 +156,7 @@ namespace pansiyonOtomasyonuV1
             aylıkVergis6 = String.Format("{0:n0}", aylıkVergi6);
             lbl6AylıkVergi.Text = "Vergi:" + "  " + aylıkVergis6.ToString();
 
-            decimal yıllıkVergi = Convert.ToDecimal((((gyıllık + myıllık + cyıllık + fyıllık) * 100) * 18));
+            decimal yıllıkVergi = Convert.ToDecimal((((gyıllık + myıllık + cyıllık + fyıllık) / 100) * 18));
             string yıllıkVergis = yıllıkVergi.ToString();
             yıllıkVergis = String.Format("{0:n0}", yıllıkVergi);
             lblYıllıkVergi.Text = "Vergi:" + "  " + yıllıkVergis.ToString();
