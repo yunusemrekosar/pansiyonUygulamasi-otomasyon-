@@ -19,23 +19,19 @@ namespace pansiyonOtomasyonuV1
         {
             InitializeComponent();
         }
-
-        SqlConnection baglanti = new SqlConnection(@"Data Source=.;Initial Catalog=pansiyon1DB;Integrated Security=True");
-
+        pansiyonEntities ent = new pansiyonEntities();
         private void doldur(Button button)
         {
             txtOdaNu.Text = button.Text;
             button.BackColor = Color.Tomato;
             button.Enabled = false;
-
         }
 
-        
+
         private void doldurbosalt(Button button, string cikis = "1000/01/01")
         {
             button.BackColor = Color.FromArgb(128, 255, 128);
             button.Enabled = true;
-
             if (Convert.ToDateTime(cikis) > DateTime.Now)
             {
                 button.BackColor = Color.Tomato;
@@ -160,45 +156,33 @@ namespace pansiyonOtomasyonuV1
         private void btnKaydet_Click(object sender, EventArgs e)
         {
             TextBox[] textBoxes = new TextBox[] { txtAdi, txtSoyadi, txtTelNu, txtTcKimlikNu, txtOdaUcreti };
-            ComboBox[] comboBoxes = new ComboBox[] {comboBox1 };
+            ComboBox[] comboBoxes = new ComboBox[] { comboBox1 };
             Helper denetleyici = new Helper();
             int a = denetleyici.Tdenetleyici(textBoxes);
             int b = denetleyici.Cdenetleyici(comboBoxes);
-            if (a+b > 0)
+            if (a + b > 0)
             {
                 MessageBox.Show("Boş Bırakılamaz Bölümler Var");
                 a = 0;
             }
             else
             {
-                DateTime giris = dtpGiris.Value;
-                DateTime cikis = dtpCikis.Value;
-                try
-                {
-                    baglanti.Open();
-                    SqlCommand komut = new SqlCommand("insert TBLmusteriler (adi,soyadi,telNu,cinsiyet,mail," +
-                       "tcKimlikNu,odaUcreti,odaNu,girisTarihi,cikisTarihi) values (@Adi,@soyadi,@telNu,@cinsiyet,@mail,@tcKimlikNu,@odaUcreti,@odaNu,@girisTarihi,@cikisTarihi)", baglanti);
-                    komut.Parameters.AddWithValue("@Adi", txtAdi.Text);
-                    komut.Parameters.AddWithValue("@soyadi", txtSoyadi.Text);
-                    komut.Parameters.AddWithValue("@telNu", txtTelNu.Text);
-                    komut.Parameters.AddWithValue("@cinsiyet", comboBox1.Text);
-                    komut.Parameters.AddWithValue("@mail", txtMail.Text);
-                    komut.Parameters.AddWithValue("@tcKimlikNu", txtTcKimlikNu.Text);
-                    komut.Parameters.AddWithValue("@odaUcreti", int.Parse(txtOdaUcreti.Text));
-                    komut.Parameters.AddWithValue("@odaNu", txtOdaNu.Text);
-                    komut.Parameters.AddWithValue("@girisTarihi", giris.ToString("yyyy /MM/dd"));
-                    komut.Parameters.AddWithValue("@cikisTarihi", cikis.ToString("yyyy /MM/dd"));
-                    komut.ExecuteNonQuery();
-                    baglanti.Close();
-                    lblSonuc.Text = txtAdi.Text + " " + txtSoyadi.Text + " Adlı Müşteri eklendi";
-                    kutularıbosalt();
-                    MusteriEkle_Load(sender, e);
-
-                }
-                catch (Exception hata)
-                {
-                    MessageBox.Show(hata.Message);
-                }
+                TBLmusteriler m = new TBLmusteriler();
+                m.adi = txtAdi.Text;
+                m.soyadi = txtSoyadi.Text;
+                m.telNu = txtTelNu.Text;
+                m.cinsiyet = comboBox1.Text;
+                m.mail = txtMail.Text;
+                m.tcKimlikNu = txtTcKimlikNu.Text;
+                m.odaUcreti = int.Parse(txtOdaUcreti.Text);
+                m.odaNu = txtOdaNu.Text;
+                m.girisTarihi = dtpGiris.Value;
+                m.cikisTarihi = dtpCikis.Value;
+                ent.TBLmusteriler.Add(m);
+                ent.SaveChanges();
+                lblSonuc.Text = txtAdi.Text + " " + txtSoyadi.Text + " Adlı Müşteri eklendi";
+                kutularıbosalt();
+                MusteriEkle_Load(sender, e);
             }
         }
         private void dtpCikis_ValueChanged(object sender, EventArgs e)
@@ -207,7 +191,6 @@ namespace pansiyonOtomasyonuV1
             DateTime cikis = dtpCikis.Value;
             int kalinacakGun = cikis.Day - giris.Day;
             txtOdaUcreti.Text = (kalinacakGun * 200).ToString();
-
         }
 
         private void btnGoAnaMenu_Click(object sender, EventArgs e)
@@ -218,16 +201,16 @@ namespace pansiyonOtomasyonuV1
             this.Hide();
         }
 
-
         private void MusteriEkle_Load(object sender, EventArgs e)
         {
-            baglanti.Open();
-            SqlCommand komut = new SqlCommand("select odaNu,girisTarihi,cikisTarihi from TBLmusteriler", baglanti);
-            SqlDataReader oku = komut.ExecuteReader();
-            while (oku.Read())
+
+            var query = from item in ent.TBLmusteriler
+                        select new { item.odaNu, item.girisTarihi, item.cikisTarihi };
+            var liste = query.ToList();
+            foreach (var item in liste)
             {
-                string p1 = "btn" + oku["odaNu"].ToString();
-                string p2 = oku["cikisTarihi"].ToString();
+                string p1 = "btn" + item.odaNu.ToString();
+                string p2 = item.cikisTarihi.ToString();
                 switch (p1)
                 {
                     case "btn101":
@@ -309,11 +292,10 @@ namespace pansiyonOtomasyonuV1
                     case "btn505":
                         doldurbosalt(btn505, p2);
                         break;
+
                     default: break;
                 }
-
             }
-            baglanti.Close();
         }
 
         private void MusteriEkle_FormClosed(object sender, FormClosedEventArgs e)

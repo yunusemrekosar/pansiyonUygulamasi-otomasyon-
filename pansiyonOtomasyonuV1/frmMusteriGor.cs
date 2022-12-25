@@ -19,47 +19,40 @@ namespace pansiyonOtomasyonuV1
         {
             InitializeComponent();
         }
-
-        SqlConnection baglanti = new SqlConnection(@"Data Source=.;Initial Catalog=pansiyon1DB;Integrated Security=True");
-
+        pansiyonEntities ent = new pansiyonEntities();
         private void veriyiac(string p1 = "01,01,1754", string p2 = "01,01,3000")
         {
             lstMusteriler.Items.Clear();
-            baglanti.Open();
-            SqlCommand komut = new SqlCommand("select * from TBLmusteriler where girisTarihi between @p1 and @p2 ", baglanti);
-            komut.Parameters.AddWithValue("@p1", Convert.ToDateTime(p1));
-            komut.Parameters.AddWithValue("@p2", Convert.ToDateTime(p2));
-            SqlDataReader oku = komut.ExecuteReader();
-
-            while (oku.Read())
+            var query = from item in ent.TBLmusteriler
+                        where item.girisTarihi >= Convert.ToDateTime(p1) && item.cikisTarihi >= Convert.ToDateTime(p2)
+                        select item;
+            var musList = ent.TBLmusteriler.ToList();
+            foreach (var item in musList)
             {
-                ListViewItem ekle = new ListViewItem();
-                ekle.Text = oku["musteriID"].ToString();
-                ekle.SubItems.Add(oku["adi"].ToString());
-                ekle.SubItems.Add(oku["soyadi"].ToString());
-                ekle.SubItems.Add(oku["telNu"].ToString());
-                ekle.SubItems.Add(oku["mail"].ToString());
-                ekle.SubItems.Add(oku["tcKimlikNu"].ToString());
-                ekle.SubItems.Add(oku["odaUcreti"].ToString());
-                ekle.SubItems.Add(oku["odaNu"].ToString());
-                ekle.SubItems.Add(oku["girisTarihi"].ToString());
-                ekle.SubItems.Add(oku["cikisTarihi"].ToString());
-                if (oku["Cinsiyet"].ToString() == "Erkek")
+                ListViewItem ekle = new ListViewItem(item.musteriID.ToString());
+                ekle.SubItems.Add(item.adi.ToString());
+                ekle.SubItems.Add(item.soyadi.ToString());
+                ekle.SubItems.Add(item.telNu.ToString());
+                ekle.SubItems.Add(item.mail.ToString());
+                ekle.SubItems.Add(item.tcKimlikNu.ToString());
+                ekle.SubItems.Add(item.odaUcreti.ToString());
+                ekle.SubItems.Add(item.odaNu.ToString());
+                ekle.SubItems.Add(item.girisTarihi.ToString());
+                ekle.SubItems.Add(item.cikisTarihi.ToString());
+                if (item.cinsiyet.ToString() == "Erkek")
                 {
                     ekle.BackColor = Color.LightSkyBlue;
                 }
-                if (oku["Cinsiyet"].ToString() == "Kadın")
+                if (item.cinsiyet.ToString() == "Kadın")
                 {
                     ekle.BackColor = Color.LightPink;
                 }
-                if (oku["Cinsiyet"].ToString() == "Diğer")
+                if (item.cinsiyet.ToString() == "Diğer")
                 {
                     ekle.BackColor = Color.LightYellow;
-
                 }
                 lstMusteriler.Items.Add(ekle);
             }
-            baglanti.Close();
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -112,17 +105,15 @@ namespace pansiyonOtomasyonuV1
 
         private void btnSil_Click(object sender, EventArgs e)
         {
-            baglanti.Open();
-            SqlCommand sil = new SqlCommand("delete from TBLmusteriler where musteriID=@id", baglanti);
-            sil.Parameters.AddWithValue("@id", id);
-            sil.ExecuteNonQuery();
-            baglanti.Close();
+            var x = ent.TBLmusteriler.Find(id);
+            ent.TBLmusteriler.Remove(x);
+            ent.SaveChanges();
             veriyiac();
         }
 
         private void btnGüncelle_Click(object sender, EventArgs e)
         {
-            TextBox[] textBoxes = new TextBox[] { txtAdi, txtSoyadi, txtTelNu, txtTcKimlikNu, txtOdaUcreti };
+            TextBox[] textBoxes = new TextBox[] {txtAdi, txtSoyadi, txtTelNu, txtTcKimlikNu, txtOdaUcreti};
             Helper denetleyici = new Helper();
             int a = denetleyici.Tdenetleyici(textBoxes);
             if (a > 0)
@@ -133,139 +124,136 @@ namespace pansiyonOtomasyonuV1
             else
             {
                 lstMusteriler.Items.Clear();
-                baglanti.Open();
+
                 DateTime giris = dtpGiris.Value;
                 DateTime cikis = dtpCikis.Value;
-                SqlCommand guncelle = new SqlCommand("update TBLmusteriler set Adi=@Adi,soyadi=@soyadi,telNu=@telNu,cinsiyet=@cinsiyet, mail=@mail,tcKimlikNu=@tcKimlikNu,odaUcreti=@odaUcreti,odaNu=@odaNu,girisTarihi=@girisTarihi,cikisTarihi=@cikisTarihi where musteriID=@id", baglanti);
-                guncelle.Parameters.AddWithValue("@id", id);
-                guncelle.Parameters.AddWithValue("@Adi", txtAdi.Text);
-                guncelle.Parameters.AddWithValue("@soyadi", txtSoyadi.Text);
-                guncelle.Parameters.AddWithValue("@telNu", txtTelNu.Text);
-                guncelle.Parameters.AddWithValue("@cinsiyet", comboBox1.Text);
-                guncelle.Parameters.AddWithValue("@mail", txtMail.Text);
-                guncelle.Parameters.AddWithValue("@tcKimlikNu", txtTcKimlikNu.Text);
-                guncelle.Parameters.AddWithValue("@odaUcreti", int.Parse(txtOdaUcreti.Text));
-                guncelle.Parameters.AddWithValue("@odaNu", txtOdaNu.Text);
-                guncelle.Parameters.AddWithValue("@girisTarihi", giris.ToString("yyyy /MM/dd"));
-                guncelle.Parameters.AddWithValue("@cikisTarihi", cikis.ToString("yyyy /MM/dd"));
-                guncelle.ExecuteNonQuery();
-                baglanti.Close();
+
+                var x = ent.TBLmusteriler.Find(id);
+                x.adi = txtAdi.Text;
+                x.soyadi = txtSoyadi.Text;
+                x.telNu = txtTelNu.Text;
+                x.cinsiyet = comboBox1.Text;
+                x.mail = txtMail.Text;
+                x.tcKimlikNu = txtTcKimlikNu.Text;
+                x.odaUcreti = int.Parse(txtOdaUcreti.Text);
+                x.odaNu = txtOdaNu.Text;
+                x.girisTarihi = giris;
+                x.cikisTarihi = cikis;
+                ent.SaveChanges();
                 veriyiac();
             }
-
         }
 
         private void btnAra_Click(object sender, EventArgs e)
         {
             lstMusteriler.Items.Clear();
-            baglanti.Open();
-
             if (comboBox2.Text == "Ad")
             {
-                SqlCommand ara = new SqlCommand("Select * from TBLmusteriler where adi like '%" + txtAra.Text + "%' ", baglanti);
-                SqlDataReader oku = ara.ExecuteReader();
-                while (oku.Read())
+                string aranan = txtAra.Text;
+                var query = from item in ent.TBLmusteriler
+                            where item.adi.Contains(aranan)
+                            select item;
+                var adList = query.ToList();
+
+                foreach (var item in adList)
                 {
-                    ListViewItem ekle = new ListViewItem();
-                    ekle.Text = oku["musteriID"].ToString();
-                    ekle.SubItems.Add(oku["adi"].ToString());
-                    ekle.SubItems.Add(oku["soyadi"].ToString());
-                    ekle.SubItems.Add(oku["telNu"].ToString());
-                    ekle.SubItems.Add(oku["mail"].ToString());
-                    ekle.SubItems.Add(oku["tcKimlikNu"].ToString());
-                    ekle.SubItems.Add(oku["odaUcreti"].ToString());
-                    ekle.SubItems.Add(oku["odaNu"].ToString());
-                    ekle.SubItems.Add(oku["girisTarihi"].ToString());
-                    ekle.SubItems.Add(oku["cikisTarihi"].ToString());
-                    if (oku["Cinsiyet"].ToString() == "Erkek")
+                    ListViewItem ekle = new ListViewItem(item.musteriID.ToString());
+                    ekle.SubItems.Add(item.adi.ToString());
+                    ekle.SubItems.Add(item.soyadi.ToString());
+                    ekle.SubItems.Add(item.telNu.ToString());
+                    ekle.SubItems.Add(item.mail.ToString());
+                    ekle.SubItems.Add(item.tcKimlikNu.ToString());
+                    ekle.SubItems.Add(item.odaUcreti.ToString());
+                    ekle.SubItems.Add(item.odaNu.ToString());
+                    ekle.SubItems.Add(item.girisTarihi.ToString());
+                    ekle.SubItems.Add(item.cikisTarihi.ToString());
+                    if (item.cinsiyet.ToString() == "Erkek")
                     {
                         ekle.BackColor = Color.LightSkyBlue;
                     }
-                    if (oku["Cinsiyet"].ToString() == "Kadın")
+                    if (item.cinsiyet.ToString() == "Kadın")
                     {
                         ekle.BackColor = Color.LightPink;
                     }
-                    if (oku["Cinsiyet"].ToString() == "Diğer")
+                    if (item.cinsiyet.ToString() == "Diğer")
                     {
                         ekle.BackColor = Color.LightYellow;
-
                     }
                     lstMusteriler.Items.Add(ekle);
-
                 }
-
             }
 
             if (comboBox2.Text == "Soyad")
             {
-                SqlCommand ara = new SqlCommand("Select * from TBLmusteriler where soyadi like '%" + txtAra.Text + "%'", baglanti);
-                SqlDataReader oku = ara.ExecuteReader();
-                while (oku.Read())
+                string aranan = txtAra.Text;
+                var query = from item in ent.TBLmusteriler
+                            where item.soyadi.Contains(aranan)
+                            select item;
+                var soyadList = query.ToList();
+
+                foreach (var item in soyadList)
                 {
-                    ListViewItem ekle = new ListViewItem();
-                    ekle.Text = oku["musteriID"].ToString();
-                    ekle.SubItems.Add(oku["adi"].ToString());
-                    ekle.SubItems.Add(oku["soyadi"].ToString());
-                    ekle.SubItems.Add(oku["telNu"].ToString());
-                    ekle.SubItems.Add(oku["mail"].ToString());
-                    ekle.SubItems.Add(oku["tcKimlikNu"].ToString());
-                    ekle.SubItems.Add(oku["odaUcreti"].ToString());
-                    ekle.SubItems.Add(oku["odaNu"].ToString());
-                    ekle.SubItems.Add(oku["girisTarihi"].ToString());
-                    ekle.SubItems.Add(oku["cikisTarihi"].ToString());
-                    if (oku["Cinsiyet"].ToString() == "Erkek")
+                    ListViewItem ekle = new ListViewItem(item.musteriID.ToString());
+                    ekle.SubItems.Add(item.adi.ToString());
+                    ekle.SubItems.Add(item.soyadi.ToString());
+                    ekle.SubItems.Add(item.telNu.ToString());
+                    ekle.SubItems.Add(item.mail.ToString());
+                    ekle.SubItems.Add(item.tcKimlikNu.ToString());
+                    ekle.SubItems.Add(item.odaUcreti.ToString());
+                    ekle.SubItems.Add(item.odaNu.ToString());
+                    ekle.SubItems.Add(item.girisTarihi.ToString());
+                    ekle.SubItems.Add(item.cikisTarihi.ToString());
+                    if (item.cinsiyet.ToString() == "Erkek")
                     {
                         ekle.BackColor = Color.LightSkyBlue;
                     }
-                    if (oku["Cinsiyet"].ToString() == "Kadın")
+                    if (item.cinsiyet.ToString() == "Kadın")
                     {
                         ekle.BackColor = Color.LightPink;
                     }
-                    if (oku["Cinsiyet"].ToString() == "Diğer")
+                    if (item.cinsiyet.ToString() == "Diğer")
                     {
                         ekle.BackColor = Color.LightYellow;
-
                     }
                     lstMusteriler.Items.Add(ekle);
-
                 }
-
             }
 
             if (comboBox2.Text == "TC Kimlik")
             {
-                SqlCommand ara = new SqlCommand("Select * from TBLmusteriler where tcKimlikNu like '%" + txtAra.Text + "%'", baglanti);
-                SqlDataReader oku = ara.ExecuteReader();
-                while (oku.Read())
+                string aranan = txtAra.Text;
+                var query = from item in ent.TBLmusteriler
+                            where item.tcKimlikNu.Contains(aranan)
+                            select item;
+                var tcList = query.ToList();
+
+                foreach (var item in tcList)
                 {
-                    ListViewItem ekle = new ListViewItem();
-                    ekle.Text = oku["musteriID"].ToString();
-                    ekle.SubItems.Add(oku["adi"].ToString());
-                    ekle.SubItems.Add(oku["soyadi"].ToString());
-                    ekle.SubItems.Add(oku["telNu"].ToString());
-                    ekle.SubItems.Add(oku["mail"].ToString());
-                    ekle.SubItems.Add(oku["tcKimlikNu"].ToString());
-                    ekle.SubItems.Add(oku["odaUcreti"].ToString());
-                    ekle.SubItems.Add(oku["odaNu"].ToString());
-                    ekle.SubItems.Add(oku["girisTarihi"].ToString());
-                    ekle.SubItems.Add(oku["cikisTarihi"].ToString());
-                    if (oku["Cinsiyet"].ToString() == "Erkek")
+                    ListViewItem ekle = new ListViewItem(item.musteriID.ToString());
+                    ekle.SubItems.Add(item.adi.ToString());
+                    ekle.SubItems.Add(item.soyadi.ToString());
+                    ekle.SubItems.Add(item.telNu.ToString());
+                    ekle.SubItems.Add(item.mail.ToString());
+                    ekle.SubItems.Add(item.tcKimlikNu.ToString());
+                    ekle.SubItems.Add(item.odaUcreti.ToString());
+                    ekle.SubItems.Add(item.odaNu.ToString());
+                    ekle.SubItems.Add(item.girisTarihi.ToString());
+                    ekle.SubItems.Add(item.cikisTarihi.ToString());
+                    if (item.cinsiyet.ToString() == "Erkek")
                     {
                         ekle.BackColor = Color.LightSkyBlue;
                     }
-                    if (oku["Cinsiyet"].ToString() == "Kadın")
+                    if (item.cinsiyet.ToString() == "Kadın")
                     {
                         ekle.BackColor = Color.LightPink;
                     }
-                    if (oku["Cinsiyet"].ToString() == "Diğer")
+                    if (item.cinsiyet.ToString() == "Diğer")
                     {
                         ekle.BackColor = Color.LightYellow;
-
                     }
                     lstMusteriler.Items.Add(ekle);
                 }
             }
-            baglanti.Close();
         }
 
         private void frmMusteriGor_FormClosed(object sender, FormClosedEventArgs e)
@@ -293,7 +281,6 @@ namespace pansiyonOtomasyonuV1
                 int kalinacakGun = cikis.Day - giris.Day;
                 txtOdaUcreti.Text = (kalinacakGun * 200).ToString();
             }
-
         }
 
         private void frmMusteriGor_Load(object sender, EventArgs e)
@@ -303,10 +290,6 @@ namespace pansiyonOtomasyonuV1
             txtTelNu.MaxLength = 11;
             txtMail.MaxLength = 50;
             txtTcKimlikNu.MaxLength = 11;
-
-
-
-
         }
     }
 }

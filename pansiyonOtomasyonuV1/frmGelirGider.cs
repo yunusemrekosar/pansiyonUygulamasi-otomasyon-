@@ -17,6 +17,7 @@ namespace pansiyonOtomasyonuV1
         {
             InitializeComponent();
         }
+        pansiyonEntities ent = new pansiyonEntities();
         SqlConnection baglanti = new SqlConnection(@"Data Source=.;Initial Catalog=pansiyon1DB;Integrated Security=True");
         private int Hesapla(string tablo, string kolon, int ay, string tarihkolonu = "")
         {
@@ -31,10 +32,6 @@ namespace pansiyonOtomasyonuV1
                 string tarih2 = tarih.ToString("yyyy/MM/dd");
 
                 SqlCommand komut = new SqlCommand("select sum(" + kolon + ") from [" + tablo + "] where " + tarihkolonu + " between '" + tarih1 + "' and '" + tarih2 + "'", baglanti);
-
-
-
-
                 sonuc += Convert.ToInt32(komut.ExecuteScalar());
 
             }
@@ -51,7 +48,6 @@ namespace pansiyonOtomasyonuV1
 
         private void frmGelirGider_Load(object sender, EventArgs e)
         {
-
             decimal gaylık = Hesapla("TBLmusteriler", "odaUcreti", 1, "girisTarihi");
             string gaylıks = gaylık.ToString();
             gaylıks = String.Format("{0:n0}", gaylık);
@@ -103,6 +99,7 @@ namespace pansiyonOtomasyonuV1
             lbl3AylıkCalısan.Text = "Çalışan Ücreti:" + "  " + caylık3s;
             lbl6AylıkCalısan.Text = "Çalışan Ücreti:" + "  " + caylık6s;
             lblYıllıkCalısan.Text = "Çalışan Ücreti:" + "  " + cyıllıks;
+
 
             decimal faylık = Hesapla("TBLfaturalar", "faturaTutari", 1, "faturaTarihi");
             string faylıks = faylık.ToString();
@@ -162,7 +159,6 @@ namespace pansiyonOtomasyonuV1
             lblYıllıkVergi.Text = "Vergi:" + "  " + yıllıkVergis.ToString();
         }
 
-
         private void frmGelirGider_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
@@ -183,7 +179,7 @@ namespace pansiyonOtomasyonuV1
             Helper denetleyici = new Helper();
             int a = denetleyici.Tdenetleyici(textBoxes);
             int b = denetleyici.Cdenetleyici(comboBoxes);
-            if (a+b > 0)
+            if (a + b > 0)
             {
                 MessageBox.Show("Boş Bırakılamaz Metin Kutuları Var");
                 a = 0;
@@ -192,13 +188,12 @@ namespace pansiyonOtomasyonuV1
             {
                 DateTime tarih = new DateTime();
                 tarih = dtpTarih.Value;
-                baglanti.Open();
-                SqlCommand komut = new SqlCommand("insert TBLfaturalar (faturaAdi, faturaTutari, faturaTarihi)values(@adi,@tutari,@tarih)", baglanti);
-                komut.Parameters.AddWithValue("@adi", cbFaturaAdi.Text);
-                komut.Parameters.AddWithValue("@tutari", Convert.ToDecimal(txtFaturaTutari.Text));
-                komut.Parameters.AddWithValue("@tarih", tarih.ToString("yyyy/MM/dd"));
-                komut.ExecuteNonQuery();
-                baglanti.Close();
+                TBLfaturalar fa = new TBLfaturalar();
+                fa.faturaAdi = cbFaturaAdi.Text;
+                fa.faturaTutari = Convert.ToDecimal(txtFaturaTutari.Text);
+                fa.faturaTarihi = tarih;
+                ent.TBLfaturalar.Add(fa);
+                ent.SaveChanges();
                 label1.Text = "Fatura Eklendi";
                 frmGelirGider_Load(sender, e);
             }

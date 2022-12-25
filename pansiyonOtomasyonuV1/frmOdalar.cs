@@ -13,13 +13,11 @@ namespace pansiyonOtomasyonuV1
 {
     public partial class frmOdalar : Form
     {
-        SqlConnection baglanti = new SqlConnection(@"Data Source=.;Initial Catalog=pansiyon1DB;Integrated Security=True");
-
         public frmOdalar()
         {
             InitializeComponent();
         }
-
+        pansiyonEntities ent = new pansiyonEntities();
         private void doldurbosalt(Button button, string cikis = "1000/01/01", string adı= "")
         {
             string odanu = button.Text;
@@ -45,14 +43,12 @@ namespace pansiyonOtomasyonuV1
 
         private void frmOdalar_Load(object sender, EventArgs e)
         {
-            baglanti.Open();
-            SqlCommand komut = new SqlCommand("select adi,soyadi,odaNu,cikisTarihi from TBLmusteriler", baglanti);
-            SqlDataReader oku = komut.ExecuteReader();
-            while (oku.Read())
+            var musList = ent.TBLmusteriler.ToList();
+            foreach (var item in musList)
             {
-                string p1 = "btn" + oku["odaNu"].ToString();
-                string p2 = oku["cikisTarihi"].ToString();
-                string p3 = oku["adi"] + " " + oku["soyadi"];
+                string p1 = "btn" + item.odaNu;
+                string p2 = item.cikisTarihi.ToString();
+                string p3 = item.adi + " " + item.soyadi;
                 switch (p1)
                 {
                     case "btn101":
@@ -136,9 +132,7 @@ namespace pansiyonOtomasyonuV1
                         break;
                     default: break;
                 }
-
             }
-            baglanti.Close();
         }
 
         private void frmOdalar_FormClosed(object sender, FormClosedEventArgs e)

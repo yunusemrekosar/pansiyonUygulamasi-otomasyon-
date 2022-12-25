@@ -18,8 +18,7 @@ namespace pansiyonOtomasyonuV1
         {
             InitializeComponent();
         }
-
-        SqlConnection baglanti = new SqlConnection(@"Data Source=.;Initial Catalog=pansiyon1DB;Integrated Security=True");
+        pansiyonEntities enti = new pansiyonEntities();
         private void btnKaydet_Click(object sender, EventArgs e)
         {
             TextBox[] textBoxes = new TextBox[] { txtPersonelAdi, txtPersonelSoyadi, txtPersonelMaasi, txtPersonelPozisyonu};
@@ -32,39 +31,32 @@ namespace pansiyonOtomasyonuV1
             }
             else
             {
-                baglanti.Open();
-                SqlCommand komut = new SqlCommand("insert TBLcalisanlar (calisanAdi, calisanSoyadi, calisanMaasi, calisanPozisyon)values(@calisanAdi, @calisanSoyadi, @calisanMaasi, @calisanPozisyon)", baglanti);
-                komut.Parameters.AddWithValue("@calisanAdi", txtPersonelAdi.Text);
-                komut.Parameters.AddWithValue("@calisanSoyadi", txtPersonelSoyadi.Text);
-                komut.Parameters.AddWithValue("@calisanMaasi", txtPersonelMaasi.Text);
-                komut.Parameters.AddWithValue("@calisanPozisyon", txtPersonelPozisyonu.Text);
-                komut.ExecuteNonQuery();
-                baglanti.Close();
+                TBLcalisanlar per = new TBLcalisanlar();
+                per.calisanAdi = txtPersonelAdi.Text;
+                per.calisanSoyadi = txtPersonelSoyadi.Text;
+                per.calisanMaasi = short.Parse(txtPersonelMaasi.Text);
+                per.calisanPozisyon = txtPersonelPozisyonu.Text;
+                enti.TBLcalisanlar.Add(per);
+                enti.SaveChanges();
+                veriyiac();
             }
         }
 
-        private void veriyiac(string p1 = "01,01,1754", string p2 = "01,01,3000")
+        private void veriyiac()
          {
-             lstwPersonel.Items.Clear();
-             baglanti.Open();
-             SqlCommand komut = new SqlCommand("select * from TBLcalisanlar", baglanti);
-            
-            SqlDataReader oku = komut.ExecuteReader();
+            lstwPersonel.Items.Clear();
+            var perList = enti.TBLcalisanlar.ToList();
 
-            while (oku.Read())
+            foreach (var item in perList)
             {
-                ListViewItem ekle = new ListViewItem();
-                ekle.Text = oku["calisanID"].ToString();
-                ekle.SubItems.Add(oku["calisanAdi"].ToString());
-                ekle.SubItems.Add(oku["calisanSoyadi"].ToString());
-                ekle.SubItems.Add(oku["calisanMaasi"].ToString());
-                ekle.SubItems.Add(oku["calisanPozisyon"].ToString());
+                ListViewItem ekle = new ListViewItem(item.calisanID.ToString());
+                ekle.SubItems.Add(item.calisanAdi.ToString());
+                ekle.SubItems.Add(item.calisanSoyadi.ToString());
+                ekle.SubItems.Add(item.calisanMaasi.ToString());
+                ekle.SubItems.Add(item.calisanPozisyon.ToString());
                 lstwPersonel.Items.Add(ekle);
-                
             }
-            
-             baglanti.Close();
-    }
+        }
         private void frmPersonelEkle_Load(object sender, EventArgs e)
         {
             veriyiac();
@@ -82,11 +74,9 @@ namespace pansiyonOtomasyonuV1
 
         private void btnSil_Click(object sender, EventArgs e)
         {
-            baglanti.Open();
-            SqlCommand sil = new SqlCommand("delete from TBLcalisanlar where calisanID=@id", baglanti);
-            sil.Parameters.AddWithValue("@id", id);
-            sil.ExecuteNonQuery();
-            baglanti.Close();
+            var per = enti.TBLcalisanlar.Find(id);
+            enti.TBLcalisanlar.Remove(per);
+            enti.SaveChanges();
             veriyiac();
         }
 
@@ -103,15 +93,12 @@ namespace pansiyonOtomasyonuV1
             else
             {
                 lstwPersonel.Items.Clear();
-                baglanti.Open();
-                SqlCommand komut = new SqlCommand("update TBLcalisanlar set calisanAdi=@calisanAdi,calisanSoyadi=@calisanSoyadi,calisanMaasi=@calisanMaasi,calisanPozisyon=@calisanPozisyon where calisanID=@id", baglanti);
-                komut.Parameters.AddWithValue("@calisanAdi", txtPersonelAdi.Text);
-                komut.Parameters.AddWithValue("@calisanSoyadi", txtPersonelSoyadi.Text);
-                komut.Parameters.AddWithValue("@calisanMaasi", txtPersonelMaasi.Text);
-                komut.Parameters.AddWithValue("@calisanPozisyon", txtPersonelPozisyonu.Text);
-                komut.Parameters.AddWithValue("@id  ", id);
-                komut.ExecuteNonQuery();
-                baglanti.Close();
+                var per = enti.TBLcalisanlar.Find(id);
+                per.calisanAdi = txtPersonelAdi.Text;
+                per.calisanSoyadi = txtPersonelSoyadi.Text;
+                per.calisanMaasi = short.Parse(txtPersonelMaasi.Text);
+                per.calisanPozisyon = txtPersonelPozisyonu.Text;
+                enti.SaveChanges();
                 veriyiac();
             }
         }

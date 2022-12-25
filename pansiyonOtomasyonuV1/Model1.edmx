@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="pansiyon1DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TBLalisveris">
+          <Key>
+            <PropertyRef Name="girisID" />
+          </Key>
+          <Property Name="girisID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="domates" Type="decimal" Precision="3" Scale="2" />
+          <Property Name="patates" Type="decimal" Precision="3" Scale="2" />
+          <Property Name="sogan" Type="decimal" Precision="3" Scale="2" />
+          <Property Name="peynir" Type="decimal" Precision="3" Scale="2" />
+          <Property Name="ekmek" Type="tinyint" />
+          <Property Name="salatalik" Type="decimal" Precision="3" Scale="2" />
+          <Property Name="bal" Type="decimal" Precision="3" Scale="2" />
+          <Property Name="recel" Type="decimal" Precision="3" Scale="2" />
+          <Property Name="tereyag" Type="decimal" Precision="3" Scale="2" />
+          <Property Name="yumurta" Type="tinyint" />
+          <Property Name="girisTarihi" Type="datetime" Nullable="false" />
+          <Property Name="toplamTutar" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBLcalisanlar">
+          <Key>
+            <PropertyRef Name="calisanID" />
+          </Key>
+          <Property Name="calisanID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="calisanAdi" Type="varchar" MaxLength="30" />
+          <Property Name="calisanSoyadi" Type="varchar" MaxLength="30" />
+          <Property Name="calisanMaasi" Type="smallint" />
+          <Property Name="calisanPozisyon" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="TBLfaturalar">
+          <Key>
+            <PropertyRef Name="faturaID" />
+          </Key>
+          <Property Name="faturaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="faturaAdi" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="faturaTutari" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="faturaTarihi" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBLmusteriler">
+          <Key>
+            <PropertyRef Name="musteriID" />
+          </Key>
+          <Property Name="musteriID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="adi" Type="varchar" MaxLength="30" />
+          <Property Name="soyadi" Type="varchar" MaxLength="20" />
+          <Property Name="telNu" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="cinsiyet" Type="varchar" MaxLength="5" />
+          <Property Name="mail" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="tcKimlikNu" Type="varchar" MaxLength="11" />
+          <Property Name="odaUcreti" Type="int" />
+          <Property Name="odaNu" Type="varchar" MaxLength="3" />
+          <Property Name="girisTarihi" Type="datetime" />
+          <Property Name="cikisTarihi" Type="datetime" />
+        </EntityType>
+        <EntityContainer Name="pansiyon1DBModelStoreContainer">
+          <EntitySet Name="TBLalisveris" EntityType="Self.TBLalisveris" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLcalisanlar" EntityType="Self.TBLcalisanlar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLfaturalar" EntityType="Self.TBLfaturalar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLmusteriler" EntityType="Self.TBLmusteriler" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="pansiyon1DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TBLmusteriler">
+          <Key>
+            <PropertyRef Name="musteriID" />
+          </Key>
+          <Property Name="musteriID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="adi" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="soyadi" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="telNu" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cinsiyet" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="mail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tcKimlikNu" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="odaUcreti" Type="Int32" />
+          <Property Name="odaNu" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="girisTarihi" Type="DateTime" Precision="3" />
+          <Property Name="cikisTarihi" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="pansiyonEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TBLmusteriler" EntityType="Self.TBLmusteriler" />
+          <EntitySet Name="TBLcalisanlar" EntityType="pansiyon1DBModel.TBLcalisanlar" />
+          <EntitySet Name="TBLalisveris" EntityType="pansiyon1DBModel.TBLalisveris" />
+          <EntitySet Name="TBLfaturalar" EntityType="pansiyon1DBModel.TBLfaturalar" />
+        </EntityContainer>
+        <EntityType Name="TBLcalisanlar">
+          <Key>
+            <PropertyRef Name="calisanID" />
+          </Key>
+          <Property Name="calisanID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="calisanAdi" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="calisanSoyadi" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="calisanMaasi" Type="Int16" />
+          <Property Name="calisanPozisyon" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TBLalisveris">
+          <Key>
+            <PropertyRef Name="girisID" />
+          </Key>
+          <Property Name="girisID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="domates" Type="Decimal" Precision="3" Scale="2" />
+          <Property Name="patates" Type="Decimal" Precision="3" Scale="2" />
+          <Property Name="sogan" Type="Decimal" Precision="3" Scale="2" />
+          <Property Name="peynir" Type="Decimal" Precision="3" Scale="2" />
+          <Property Name="ekmek" Type="Byte" />
+          <Property Name="salatalik" Type="Decimal" Precision="3" Scale="2" />
+          <Property Name="bal" Type="Decimal" Precision="3" Scale="2" />
+          <Property Name="recel" Type="Decimal" Precision="3" Scale="2" />
+          <Property Name="tereyag" Type="Decimal" Precision="3" Scale="2" />
+          <Property Name="yumurta" Type="Byte" />
+          <Property Name="girisTarihi" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="toplamTutar" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBLfaturalar">
+          <Key>
+            <PropertyRef Name="faturaID" />
+          </Key>
+          <Property Name="faturaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="faturaAdi" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="faturaTutari" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="faturaTarihi" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="pansiyon1DBModelStoreContainer" CdmEntityContainer="pansiyonEntities">
+          <EntitySetMapping Name="TBLmusteriler">
+            <EntityTypeMapping TypeName="pansiyon1DBModel.TBLmusteriler">
+              <MappingFragment StoreEntitySet="TBLmusteriler">
+                <ScalarProperty Name="musteriID" ColumnName="musteriID" />
+                <ScalarProperty Name="adi" ColumnName="adi" />
+                <ScalarProperty Name="soyadi" ColumnName="soyadi" />
+                <ScalarProperty Name="telNu" ColumnName="telNu" />
+                <ScalarProperty Name="cinsiyet" ColumnName="cinsiyet" />
+                <ScalarProperty Name="mail" ColumnName="mail" />
+                <ScalarProperty Name="tcKimlikNu" ColumnName="tcKimlikNu" />
+                <ScalarProperty Name="odaUcreti" ColumnName="odaUcreti" />
+                <ScalarProperty Name="odaNu" ColumnName="odaNu" />
+                <ScalarProperty Name="girisTarihi" ColumnName="girisTarihi" />
+                <ScalarProperty Name="cikisTarihi" ColumnName="cikisTarihi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLcalisanlar">
+            <EntityTypeMapping TypeName="pansiyon1DBModel.TBLcalisanlar">
+              <MappingFragment StoreEntitySet="TBLcalisanlar">
+                <ScalarProperty Name="calisanPozisyon" ColumnName="calisanPozisyon" />
+                <ScalarProperty Name="calisanMaasi" ColumnName="calisanMaasi" />
+                <ScalarProperty Name="calisanSoyadi" ColumnName="calisanSoyadi" />
+                <ScalarProperty Name="calisanAdi" ColumnName="calisanAdi" />
+                <ScalarProperty Name="calisanID" ColumnName="calisanID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLalisveris">
+            <EntityTypeMapping TypeName="pansiyon1DBModel.TBLalisveris">
+              <MappingFragment StoreEntitySet="TBLalisveris">
+                <ScalarProperty Name="toplamTutar" ColumnName="toplamTutar" />
+                <ScalarProperty Name="girisTarihi" ColumnName="girisTarihi" />
+                <ScalarProperty Name="yumurta" ColumnName="yumurta" />
+                <ScalarProperty Name="tereyag" ColumnName="tereyag" />
+                <ScalarProperty Name="recel" ColumnName="recel" />
+                <ScalarProperty Name="bal" ColumnName="bal" />
+                <ScalarProperty Name="salatalik" ColumnName="salatalik" />
+                <ScalarProperty Name="ekmek" ColumnName="ekmek" />
+                <ScalarProperty Name="peynir" ColumnName="peynir" />
+                <ScalarProperty Name="sogan" ColumnName="sogan" />
+                <ScalarProperty Name="patates" ColumnName="patates" />
+                <ScalarProperty Name="domates" ColumnName="domates" />
+                <ScalarProperty Name="girisID" ColumnName="girisID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLfaturalar">
+            <EntityTypeMapping TypeName="pansiyon1DBModel.TBLfaturalar">
+              <MappingFragment StoreEntitySet="TBLfaturalar">
+                <ScalarProperty Name="faturaTarihi" ColumnName="faturaTarihi" />
+                <ScalarProperty Name="faturaTutari" ColumnName="faturaTutari" />
+                <ScalarProperty Name="faturaAdi" ColumnName="faturaAdi" />
+                <ScalarProperty Name="faturaID" ColumnName="faturaID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

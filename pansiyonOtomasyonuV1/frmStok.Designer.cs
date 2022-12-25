@@ -154,7 +154,6 @@
             this.boxYeniGiris.TabIndex = 5;
             this.boxYeniGiris.TabStop = false;
             this.boxYeniGiris.Text = "Yeni Giriş";
-            this.boxYeniGiris.Enter += new System.EventHandler(this.boxYeniGiris_Enter);
             // 
             // textBox12
             // 
