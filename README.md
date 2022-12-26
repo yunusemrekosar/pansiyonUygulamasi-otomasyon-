@@ -1,1 +1,1 @@
-# pansiyonUygulamasi C# ve MS SQL ile yapılan bir pansiyon otomasyonu
+C# ve MS SQL ile yapılan bir pansiyon otomasyonu
